@@ -1,3 +1,4 @@
+//#region Cart
 export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
 export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY';
@@ -30,8 +31,9 @@ export const decrementCartQuantity = productId => {
       payload: productId
   }
 };
+//#endregion 
 
-
+//#region Filter
 export const ADD_BRAND_TO_FILTER = 'ADD_BRAND_TO_FILTER';
 export const REMOVE_BRAND_FROM_FILTER = 'REMOVE_BRAND_FROM_FILTER';
 
@@ -49,7 +51,9 @@ export const removeBrandFromFilter = brand => {
         brand
     }
 };
+//#endregion
 
+//#region Sort
 export const ORDER_BY_ASC = 'ORDER_BY_ASC';
 export const ORDER_BY_DESC = 'ORDER_BY_DESC';
 export const CLEAR_ORDER_BY_PRICE = 'CLEAR_ORDER_BY_PRICE';
@@ -71,8 +75,9 @@ export const clearOrderBy = () => {
         type: CLEAR_ORDER_BY_PRICE
     }
 };
+//#endregion
 
-
+//#region Change page
 export const PREV_PAGE = 'PREV_PAGE';
 export const NEXT_PAGE = 'NEXT_PAGE';
 export const GO_PAGE = 'GO_PAGE';
@@ -104,3 +109,4 @@ export const countItem = (n) => {
         totalItemsCount: n
     }
 }
+//#endregion 
