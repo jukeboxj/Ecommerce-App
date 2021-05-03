@@ -36,6 +36,7 @@ export const decrementCartQuantity = productId => {
 //#region Filter
 export const ADD_BRAND_TO_FILTER = 'ADD_BRAND_TO_FILTER';
 export const REMOVE_BRAND_FROM_FILTER = 'REMOVE_BRAND_FROM_FILTER';
+export const REMOVE_ALL_BRAND_FROM_FILTER = 'REMOVE_ALL_BRAND_FROM_FILTER';
 
 export const addBrandToFilter = brand => {
     return {
@@ -44,11 +45,16 @@ export const addBrandToFilter = brand => {
     }
 };
 
-
 export const removeBrandFromFilter = brand => {
     return  {
         type: REMOVE_BRAND_FROM_FILTER,
         brand
+    }
+};
+
+export const removeAllBrandFromFilter = () => {
+    return  {
+        type: REMOVE_ALL_BRAND_FROM_FILTER
     }
 };
 //#endregion

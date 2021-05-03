@@ -9,7 +9,7 @@ import './App.scss';
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ShoppingCart from "./pages/ShopingCart/ShoppingCart";
 
 
@@ -28,7 +28,7 @@ class App extends Component {
                         return <Redirect to={'/products'}/>
                     }}/>
                     <Route exact path={'/products'} component={Home}/>
-                    <Route exact path={'/products/:id'} component={ProductDetail}/>
+                    <Route exact path={'/products/:id'} component={ProductDetails}/>
                     <Route exact patr={'/cart'} component={ShoppingCart}/>
                 </Switch>
                 <Footer/>

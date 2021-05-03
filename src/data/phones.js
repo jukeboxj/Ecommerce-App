@@ -13,10 +13,13 @@ export const phones = [{
     "memory": "16GB, 32GB and RAM 1 GB",
     "id": 0,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-}, {
+}
+, {
     "title": "Huawei Mate 20 Lite 64 GB (Huawei Türkiye Garantili)",
     "category": "phone",
-    "images": ["https://productimages.hepsiburada.net/s/21/280-413/9933217792050.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217628210.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217660978.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217693746.jpg?v1"],
+    "images": [
+        // "https://productimages.hepsiburada.net/s/21/280-413/9933217792050.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217628210.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217660978.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217693746.jpg?v1"
+    ],
     "brand": "huawei",
     "price": 1823.6625483451157,
     "cpu": "1.3GHz Apple A6",
@@ -28,7 +31,8 @@ export const phones = [{
     "memory": "16GB, 32GB and RAM 1 GB",
     "id": 1,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-}, {
+}
+, {
     "title": "Huawei P20 Lite 64 GB (Huawei Türkiye Garantili)",
     "category": "phone",
     "images": ["https://productimages.hepsiburada.net/s/19/280-413/9826975907890.jpg?v1", "https://productimages.hepsiburada.net/s/19/280-413/9826975940658.jpg?v1", "https://productimages.hepsiburada.net/s/19/280-413/9826975973426.jpg?v1", "https://productimages.hepsiburada.net/s/19/280-413/9826976006194.jpg?v1"],
@@ -358,4 +362,5 @@ export const phones = [{
     "memory": "16GB, 32GB and RAM 1 GB",
     "id": 23,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-}]
+}
+]

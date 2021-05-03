@@ -21,6 +21,7 @@ const OrderFilter = ({dispatch}) => {
     const removeFilter = (e) => {
 
         const buttons = document.getElementsByName('orderByPrice');
+        // console.log('btn', buttons)
 
         buttons.forEach(el => {
             el.checked = false;
@@ -31,24 +32,26 @@ const OrderFilter = ({dispatch}) => {
     };
 
     if(selected) {
-        removeSelected  =  <span onClick={removeFilter} className="text-remove-selected text-right">Remove filter</span>
+        removeSelected  =  
+            <span onClick={removeFilter} className="text-remove-selected text-right">
+                Remove
+            </span>
     }
-
-
 
     return (
             <div className="card">
-                <div className="card-header">
-                    <h3>Price {removeSelected} </h3>
+                <div className="card-header d-flex align-items-center justify-content-between">
+                    <h3>Price</h3>
+                    {removeSelected}
                 </div>
                 <ul className="list-group flex-row  flex-wrap" >
                     <li className="list-group-item flex-fill">
                         <label className="custom-radio-btn"> Low to high
                             <input
-                                    value={ORDER_BY_ASC}
-                                    type="radio"
-                                    onChange={handleRadioChange}
-                                   name="orderByPrice" className="custom-radio-btn__input"/>
+                                value={ORDER_BY_ASC}
+                                type="radio"
+                                onChange={handleRadioChange}
+                                name="orderByPrice" className="custom-radio-btn__input"/>
                             <span className="custom-radio-btn__span"></span>
                         </label>
                     </li>

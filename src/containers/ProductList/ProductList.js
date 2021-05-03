@@ -18,21 +18,21 @@ class ProductList extends Component {
         gridValue: 3
     };
 
-    changeLayout = (n) => {
-        this.setState({gridValue: n});
+    // changeLayout = (n) => {
+    //     this.setState({gridValue: n});
 
-        let realGridValue;
+    //     let realGridValue;
 
-        if(n === 4) {
-            realGridValue = 3
-        } else {
-            realGridValue = 4;
-        }
+    //     if(n === 4) {
+    //         realGridValue = 3
+    //     } else {
+    //         realGridValue = 4;
+    //     }
 
-      this.setState({
-          colValue: `col-lg-${realGridValue}`
-      });
-    };
+    //   this.setState({
+    //       colValue: `col-lg-${realGridValue}`
+    //   });
+    // };
 
 
     onPrev = () => {
@@ -63,7 +63,7 @@ class ProductList extends Component {
 
         return (
             <div className="col-lg-9">
-                <div className="row mb-3">
+                {/* <div className="row mb-3">
                     <div className="col-12 d-none d-lg-block d-xl-block">
                         <div className="card ">
                             <div className="card-header d-flex justify-content-end">
@@ -73,7 +73,7 @@ class ProductList extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="row">
                     {paginationPipe(this.props.products, this.state).map(product =>{
                         let classes = `${this.state.colValue} col-md-6 mb-4`;

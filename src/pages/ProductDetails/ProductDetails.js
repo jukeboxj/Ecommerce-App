@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ProductDetailComponent from '../../components/ProductDetail/ProductDetail';
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 
-const ProductDetail = (props) => {
+const ProductDetails = (props) => {
 
     console.log(props);
 
@@ -30,4 +30,4 @@ const mapStateToProps = (state, props) =>  {
 
 
 
-export default connect(mapStateToProps, null)(ProductDetail);
+export default connect(mapStateToProps, null)(ProductDetails);
