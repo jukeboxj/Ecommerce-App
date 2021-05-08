@@ -32,19 +32,19 @@ const ProductDetail = (props) => {
                 <h3 className="title mb-3">{title}</h3>
 
                 <p className="price-detail-wrap">
-	<span className="price h3 text-warning">
-		<span className="currency">$</span><span className="num">{formatMoney(price)}</span>
-	</span>
+                    <span className="price h3 text-warning">
+                        <span className="currency">$</span><span className="num">{formatMoney(price)}</span>
+                    </span>
                 </p>
                 <dl className="item-property">
                     <dt>Description</dt>
                     <dd><p className="text-capitalize">{description}</p></dd>
                 </dl>
                 <dl className="param param-feature">
-                    <dt>category</dt>
+                    <dt>Category</dt>
                     <dd className="text-capitalize">{category}</dd>
                 </dl>
-                <dl className="param param-feature">
+                {/* <dl className="param param-feature">
                     <dt>Size</dt>
                     <dd>{size}</dd>
                 </dl>
@@ -67,9 +67,8 @@ const ProductDetail = (props) => {
                 <dl className="param param-feature">
                     <dt>Battery</dt>
                     <dd>{battery}</dd>
-                </dl>
-                <hr/>
-                <hr/>
+                </dl> */}
+             
                 <button
                     onClick={onCart}
                     className="btn btn-lg btn-outline-primary text-uppercase"><i

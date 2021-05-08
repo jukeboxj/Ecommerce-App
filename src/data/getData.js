@@ -34,7 +34,7 @@ function getRandomArbitrary(min, max) {
 }
 
 category
-var phones = Object.keys(imagesMap).reduce((acc, key , i) => {
+var items = Object.keys(imagesMap).reduce((acc, key , i) => {
 
     if(imagesMap[key].length !== 0) {
         var newItem = {
@@ -49,7 +49,7 @@ var phones = Object.keys(imagesMap).reduce((acc, key , i) => {
         };
         newItem.title = key;
         newItem.category = key.split(' ')[0].toLowerCase();
-        newItem.category = 'phone';
+        newItem.category = 'item';
         newItem.images = imagesMap[key];
 
         acc.push(newItem);
@@ -58,4 +58,4 @@ var phones = Object.keys(imagesMap).reduce((acc, key , i) => {
     return acc;
 }, []);
 
-console.log(JSON.stringify(phones));
+console.log(JSON.stringify(items));

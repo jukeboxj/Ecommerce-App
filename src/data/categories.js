@@ -1,1 +1,1 @@
-export const categories = ["apple","huawei","meizu","samsung","vestel","xiaomi","asus"];
+export const categories = ["green vein","red vein","white vein","yellow vein","split pack"];
