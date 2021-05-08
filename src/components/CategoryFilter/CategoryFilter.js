@@ -1,14 +1,14 @@
 import React, {Component, useState} from 'react';
 import {connect} from 'react-redux';
-import './BrandFilter.scss';
-import {brands} from "../../data/brands";
-import {addBrandToFilter, removeBrandFromFilter, removeAllBrandFromFilter} from "../../actions";
+import './CategoryFilter.scss';
+import {categories} from "../../data/categories";
+import {addCategoryToFilter, removeCategoryFromFilter, removeAllCategoryFromFilter} from "../../actions";
 
 
-const BrandFilter = (props) => {
+const CategoryFilter = (props) => {
 
     let removeSelected;
-    const {dispatch, brandItemsCount} = props;
+    const {dispatch, categoryItemsCount} = props;
     const [selected, setSelected] = useState('');
 
     const handleSelectBox = (e) => {
@@ -17,15 +17,15 @@ const BrandFilter = (props) => {
         setSelected(value);
 
         if(e.target.checked) {
-            dispatch(addBrandToFilter(name));
+            dispatch(addCategoryToFilter(name));
         } else {
-            dispatch(removeBrandFromFilter(name));
+            dispatch(removeCategoryFromFilter(name));
         }
     };
 
     const removeFilter = (e) => {
 
-        brands.forEach(
+        categories.forEach(
             b => {
                 const btn = document.getElementsByName(b);
                 //btn yields a nodelist, but all btn names are unique
@@ -33,7 +33,7 @@ const BrandFilter = (props) => {
             }
         )
 
-        dispatch(removeAllBrandFromFilter())
+        dispatch(removeAllCategoryFromFilter())
         setSelected('');
     };
 
@@ -47,16 +47,16 @@ const BrandFilter = (props) => {
     return (
         <div className="card mb-3">
             <div className="card-header d-flex align-items-center justify-content-between">
-                <h3>Brands</h3>
+                <h3>Category</h3>
                 {removeSelected}
             </div>
             <ul className="list-group flex-row flex-wrap">
-                {brands.map(brand => (
+                {categories.map(category => (
                     <li className="list-group-item flex-50">
-                        <label className="custom-checkbox text-capitalize"> {brand} ({brandItemsCount[brand]})
+                        <label className="custom-checkbox text-capitalize"> {category} ({categoryItemsCount[category]})
                             <input 
                                 type="checkbox"
-                                name={brand}
+                                name={category}
                                 className="custom-checkbox__input" 
                                 onInput={handleSelectBox}
                             />
@@ -72,17 +72,17 @@ const BrandFilter = (props) => {
 
 const mapStateToProps = (state) => {
 
-    const brandItemsCount = {};
+    const categoryItemsCount = {};
 
     state.shop.products.forEach(p => {
-        brandItemsCount[p.brand] = brandItemsCount[p.brand] + 1 || 1;
+        categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1;
     });
 
 
     return {
-        brandItemsCount
+        categoryItemsCount
     }
 
 };
 
-export default connect(mapStateToProps)(BrandFilter);
+export default connect(mapStateToProps)(CategoryFilter);

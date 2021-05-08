@@ -1,3 +1,5 @@
+import { category } from "../data/categories";
+
 //#region Cart
 export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
 export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
@@ -34,27 +36,27 @@ export const decrementCartQuantity = productId => {
 //#endregion 
 
 //#region Filter
-export const ADD_BRAND_TO_FILTER = 'ADD_BRAND_TO_FILTER';
-export const REMOVE_BRAND_FROM_FILTER = 'REMOVE_BRAND_FROM_FILTER';
-export const REMOVE_ALL_BRAND_FROM_FILTER = 'REMOVE_ALL_BRAND_FROM_FILTER';
+export const ADD_CATEGORY_TO_FILTER = 'ADD_CATEGORY_TO_FILTER';
+export const REMOVE_CATEGORY_FROM_FILTER = 'REMOVE_CATEGORY_FROM_FILTER';
+export const REMOVE_ALL_CATEGORY_FROM_FILTER = 'REMOVE_ALL_CATEGORY_FROM_FILTER';
 
-export const addBrandToFilter = brand => {
+export const addCategoryToFilter = category => {
     return {
-        type: ADD_BRAND_TO_FILTER,
-        brand
+        type: ADD_CATEGORY_TO_FILTER,
+        category
     }
 };
 
-export const removeBrandFromFilter = brand => {
+export const removeCategoryFromFilter = category => {
     return  {
-        type: REMOVE_BRAND_FROM_FILTER,
-        brand
+        type: REMOVE_CATEGORY_FROM_FILTER,
+        category
     }
 };
 
-export const removeAllBrandFromFilter = () => {
+export const removeAllCategoryFromFilter = () => {
     return  {
-        type: REMOVE_ALL_BRAND_FROM_FILTER
+        type: REMOVE_ALL_CATEGORY_FROM_FILTER
     }
 };
 //#endregion

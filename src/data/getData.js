@@ -33,11 +33,11 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-brand
+category
 var phones = Object.keys(imagesMap).reduce((acc, key , i) => {
 
     if(imagesMap[key].length !== 0) {
-        var newPhone = {
+        var newItem = {
             price: getRandomArbitrary(1500, 10000),
             cpu: "1.3GHz Apple A6",
             camera: "8mp (3264x2448)",
@@ -47,12 +47,12 @@ var phones = Object.keys(imagesMap).reduce((acc, key , i) => {
             battery: "1480 mAh",
             memory: "16GB, 32GB and RAM 1 GB"
         };
-        newPhone.title = key;
-        newPhone.brand = key.split(' ')[0].toLowerCase();
-        newPhone.category = 'phone';
-        newPhone.images = imagesMap[key];
+        newItem.title = key;
+        newItem.category = key.split(' ')[0].toLowerCase();
+        newItem.category = 'phone';
+        newItem.images = imagesMap[key];
 
-        acc.push(newPhone);
+        acc.push(newItem);
     }
 
     return acc;

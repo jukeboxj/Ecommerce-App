@@ -8,7 +8,7 @@ const ProductDetail = (props) => {
     const {
         title,
         images,
-        brand,
+        category,
         price,
         cpu,
         camera,
@@ -41,8 +41,8 @@ const ProductDetail = (props) => {
                     <dd><p className="text-capitalize">{description}</p></dd>
                 </dl>
                 <dl className="param param-feature">
-                    <dt>Brand</dt>
-                    <dd className="text-capitalize">{brand}</dd>
+                    <dt>category</dt>
+                    <dd className="text-capitalize">{category}</dd>
                 </dl>
                 <dl className="param param-feature">
                     <dt>Size</dt>

@@ -1,0 +1,1 @@
+export const categories = ["apple","huawei","meizu","samsung","vestel","xiaomi","asus"];

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Product from "../../components/Product/Product";
 
-import {brandFilter} from "../../pipes/brandFilter";
+import {categoryFilter} from "../../pipes/categoryFilter";
 import {orderByFilter} from "../../pipes/orderByFilter";
 import LayoutMode from "../../components/LayoutMode/LayoutMode";
 import {paginationPipe} from "../../pipes/paginationFilter";
@@ -12,7 +12,7 @@ class ProductList extends Component {
 
     state = {
         colValue : 'col-lg-4',
-        perPage: 12,
+        perPage: 48,
         currentPage: 1,
         pagesToShow: 3,
         gridValue: 3
@@ -82,7 +82,7 @@ class ProductList extends Component {
                         </div>)
                     })}
                 </div>
-                <div className="d-flex justify-content-end">
+                {/* <div className="d-flex justify-content-end">
                     <Pagination
                         totalItemsCount={this.props.products.length}
                         currentPage={this.state.currentPage}
@@ -92,18 +92,18 @@ class ProductList extends Component {
                         onPrevPage={this.onPrev}
                         onNextPage={this.onNext}
                     />
-                </div>
+                </div> */}
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const brands = state.brandFilter;
+    const categorys = state.categoryFilter;
     const orderBy = state.orderBy;
 
-    const filterByBrandArr = brandFilter(state.shop.products, brands);
-    const filterByOrderArr = orderByFilter(filterByBrandArr, orderBy);
+    const filterByCategoryArr = categoryFilter(state.shop.products, categorys);
+    const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy);
 
 
     return {products: filterByOrderArr }
