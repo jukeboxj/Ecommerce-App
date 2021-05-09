@@ -65,7 +65,7 @@ const CartItem = (
             </div>
             <div className="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row product-quantity-container align-items-center">
                 <div className="col-6 col-sm-6 col-md-6 text-md-right" style={{paddingTop: '5px'}}>
-                    <h6><strong>{formatMoney(price)}$ <span className="text-muted">x</span></strong></h6>
+                    <h6><strong>${formatMoney(price)} <span className="text-muted">x</span></strong></h6>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4">
                     <div className="quantity">
