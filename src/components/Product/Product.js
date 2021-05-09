@@ -6,7 +6,7 @@ import {cumulativeOffSet} from "../../utilities/cumulativeOffset";
 
 import './Product.scss';
 import SlideDots from "../SlideDots/SlideDots";
-import {addProductToCart} from "../../actions";
+import {addProductToCart, stopShakeCart} from "../../actions";
 
 
 const Product = (props) => {
@@ -23,6 +23,12 @@ const Product = (props) => {
     const [img, setImg] = useState(images[0]);
     const [aItem, setAItem] = useState(0);
 
+    const handleAddToCart = () => {
+        props.dispatch(addProductToCart({...props.product}));
+        setTimeout(() => {
+            props.dispatch(stopShakeCart())
+        }, 500)
+    }
 
     const handleImageChange = (e) => {
 
@@ -80,10 +86,9 @@ const Product = (props) => {
                 <h5 className="product__price">${formatMoney(price)}</h5>
                 <p className="card-text product__description">{description}</p>
                 <button
-                    onClick={() => {
-                        props.dispatch(addProductToCart({...props.product}))
-                    }}
-                    className="btn btn-info product__add-to-cart">Add to cart
+                    onClick={handleAddToCart}
+                    className="btn btn-info product__add-to-cart">
+                        Add to cart
                 </button>
             </div>
         </div>

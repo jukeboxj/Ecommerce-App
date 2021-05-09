@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import './Header.scss';
 
-const Header = ({cartLength}) => {
+const Header = ({cartLength, shakeCart}) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
                 <NavLink className="navbar-brand" to="/">Ecommerce</NavLink>
-                <div>
+                <div className={shakeCart? 'wiggle' : ''}>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <NavLink className="nav-link" to={"/cart"}>
@@ -27,7 +28,8 @@ const Header = ({cartLength}) => {
 
 const mapStateToProps = (state) => {
   return {
-      cartLength: state.shop.cart.length
+        cartLength: state.shop.cart.length,
+        shakeCart: state.shop.shakeCart
   }
 };
 

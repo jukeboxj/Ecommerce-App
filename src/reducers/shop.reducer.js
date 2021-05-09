@@ -1,5 +1,6 @@
 import {
     ADD_PRODUCT_TO_CART,
+    STOP_SHAKE_CART,
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART
@@ -8,7 +9,8 @@ import {items} from "../data/items";
 
 const initialState = {
     products: items,
-    cart: []
+    cart: [],
+    shakeCart: false
 };
 
 
@@ -65,7 +67,11 @@ const shopReducer = (state = initialState, action ) => {
                 updatedCart[updatedItemIndex] = updatedItem;
             }
 
-            return {...state, cart: updatedCart};
+            return {...state, cart: updatedCart, shakeCart: true};
+
+        case STOP_SHAKE_CART:
+            return {...state, shakeCart: false}
+
         case REMOVE_PRODUCT_FROM_CART:
             updatedCart = [...state.cart];
             updatedItemIndex = updatedCart.findIndex(
