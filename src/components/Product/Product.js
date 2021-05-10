@@ -24,7 +24,7 @@ const Product = (props) => {
     const [aItem, setAItem] = useState(0);
 
     const handleAddToCart = () => {
-        props.dispatch(addProductToCart({...props.product}));
+        props.dispatch(addProductToCart(props.product));
         setTimeout(() => {
             props.dispatch(stopShakeCart())
         }, 500)

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {formatMoney} from "../../pipes/priceFormatter";
-import {addProductToCart} from "../../actions";
+import {addProductToCart, stopShakeCart} from "../../actions";
 
 const ProductDetail = (props) => {
 
@@ -21,9 +21,11 @@ const ProductDetail = (props) => {
         id
     } = props.product;
 
-
     const onCart = () => {
         props.dispatch(addProductToCart(props.product));
+        setTimeout(() => {
+            props.dispatch(stopShakeCart())
+        }, 500)
     };
 
     return (
