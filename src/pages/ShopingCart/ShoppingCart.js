@@ -6,22 +6,22 @@ import CartItem from "../../components/CartItem/CartItem";
 const ShoppingCart = (props) => {
     return (
         <>
-            <div className="container" style={{paddingTop: '6rem'}}>
+            <div className="container pt-5 pb-5">
                 <div className="card shopping-cart">
                     <div className="card-header bg-dark text-light">
                         <i className="bi bi-cart-fill me-2" aria-hidden="true" />
                         Shopping Cart
                         <div className="clearfix"></div>
                     </div>
-                    <div className="card-body">
+                    <ul className="list-group list-group-flush">
                         {props.cartItemCount 
                         ? props.cartItems.map(
                             cart => (
                                 <CartItem {...cart} img={cart.images[0]} />
                             )
                         ) 
-                        : <div className="text-center">There is no product in your cart</div> }
-                    </div>
+                        : <li className="list-group-item text-center m-5">There is no product in your cart</li> }
+                    </ul>
                     <div className="card-footer">
                         <div className="text-end" style={{margin: '10px'}}>
                             <div style={{margin: '5px'}}>

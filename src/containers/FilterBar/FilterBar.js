@@ -10,7 +10,7 @@ class FilterBar extends Component {
                     <div className="col-12">
                         <CategoryFilter/>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 pb-3">
                         <OrderFilter/>
                     </div>
                 </div>
