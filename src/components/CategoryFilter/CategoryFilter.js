@@ -53,7 +53,7 @@ const CategoryFilter = (props) => {
             <ul className="list-group list-group-flush">
                 {categories.map(category => (
                     <li className="list-group-item flex-50">
-                        <label className="custom-checkbox text-capitalize"> {category} ({categoryItemsCount[category]})
+                        <label className="custom-checkbox text-capitalize fs-6"> {category} ({categoryItemsCount[category]})
                             <input 
                                 type="checkbox"
                                 name={category}

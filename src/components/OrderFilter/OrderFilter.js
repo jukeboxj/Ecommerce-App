@@ -46,7 +46,7 @@ const OrderFilter = ({dispatch}) => {
                 </div>
                 <ul className="list-group list-group-flush" >
                     <li className="list-group-item flex-fill">
-                        <label className="custom-radio-btn"> Low to high
+                        <label className="custom-radio-btn fs-6"> Low to high
                             <input
                                 value={ORDER_BY_ASC}
                                 type="radio"
@@ -55,7 +55,7 @@ const OrderFilter = ({dispatch}) => {
                             <span className="custom-radio-btn__span"></span>
                         </label>
                     </li>
-                    <li className="list-group-item flex-fill">
+                    <li className="list-group-item flex-fill fs-6">
                         <label className="custom-radio-btn"> High to low
                             <input
                                 value={ORDER_BY_DESC}
