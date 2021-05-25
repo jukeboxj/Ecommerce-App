@@ -71,7 +71,8 @@ const Product = (props) => {
 
     return (
         <div className="card h-100 product">
-            <Link to={`/products/${id}`} className="product__link"><img
+            <Link to={`/products/${id}`} className="product__link">
+                <img
                 onMouseMove={handleImageChange}
                 onMouseOut={handleMouseOut}
                 onTouchMove={handleImageChange}
@@ -80,14 +81,15 @@ const Product = (props) => {
                 <SlideDots len={images.length} activeItem={aItem} changeItem={changeImage}/>
             </Link>
             <div className="card-body product__text">
-                <h4 className="card-title product__title">
-                    <Link to={`/products/${id}`}>{title}</Link>
+                <h4 className="card-title product__title text-decoration-none">
+                    <Link to={`/products/${id}`}
+                    >{title}</Link>
                 </h4>
                 <h5 className="product__price">${formatMoney(price)}</h5>
-                <p className="card-text product__description">{description}</p>
+                <p className="card-text product__description">{description} ...</p>
                 <button
                     onClick={handleAddToCart}
-                    className="btn btn-info product__add-to-cart">
+                    className="btn btn-outline-primary product__add-to-cart">
                         Add to cart
                 </button>
             </div>

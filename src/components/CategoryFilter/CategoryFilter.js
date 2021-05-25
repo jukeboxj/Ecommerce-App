@@ -50,7 +50,7 @@ const CategoryFilter = (props) => {
                 <h3>Category</h3>
                 {removeSelected}
             </div>
-            <ul className="list-group flex-row flex-wrap">
+            <ul className="list-group list-group-flush">
                 {categories.map(category => (
                     <li className="list-group-item flex-50">
                         <label className="custom-checkbox text-capitalize"> {category} ({categoryItemsCount[category]})

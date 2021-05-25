@@ -10,11 +10,11 @@ const Header = ({cartLength, shakeCart}) => {
             <div className="container">
                 <NavLink className="navbar-brand" to="/">Ecommerce</NavLink>
                 <div className={shakeCart? 'wiggle' : ''}>
-                    <ul className="navbar-nav ml-auto">
+                    <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <NavLink className="nav-link" to={"/cart"}>
-                                <i className="fa fa-shopping-cart mr-2"
-                                    aria-hidden="true" />
+                                <i className="bi bi-cart-fill me-2"
+                                    aria-hidden="true"/>
                                 Cart {cartLength ? `(${cartLength})`: ''}
                             </NavLink>
                         </li>

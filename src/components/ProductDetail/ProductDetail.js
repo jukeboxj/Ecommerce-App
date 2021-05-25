@@ -73,8 +73,10 @@ const ProductDetail = (props) => {
              
                 <button
                     onClick={onCart}
-                    className="btn btn-lg btn-outline-primary text-uppercase"><i
-                    className="fa fa-shopping-cart"/> Add to cart
+                    className="btn btn-lg btn-outline-primary text-uppercase"
+                >
+                    <i class="bi bi-cart-plus-fill me-2" />
+                    Add to cart
                 </button>
             </article>
         </aside>

@@ -5,13 +5,11 @@ import rootReducer from './reducers';
 
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-import './App.scss';
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ShoppingCart from "./pages/ShopingCart/ShoppingCart";
-
 
 
 export const  store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

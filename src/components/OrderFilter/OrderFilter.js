@@ -44,7 +44,7 @@ const OrderFilter = ({dispatch}) => {
                     <h3>Price</h3>
                     {removeSelected}
                 </div>
-                <ul className="list-group flex-row  flex-wrap" >
+                <ul className="list-group list-group-flush" >
                     <li className="list-group-item flex-fill">
                         <label className="custom-radio-btn"> Low to high
                             <input
