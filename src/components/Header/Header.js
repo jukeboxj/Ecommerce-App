@@ -8,7 +8,7 @@ const Header = ({cartLength, shakeCart}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
-                <NavLink className="navbar-brand" to="/">Ecommerce</NavLink>
+                <NavLink className="navbar-brand" to="/">Kirkfall</NavLink>
                 <div className={shakeCart? 'wiggle' : ''}>
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">

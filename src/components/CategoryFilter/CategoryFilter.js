@@ -47,7 +47,7 @@ const CategoryFilter = (props) => {
     return (
         <div className="card mb-3">
             <div className="card-header d-flex align-items-center justify-content-between">
-                <h3>Category</h3>
+                <h4>Category</h4>
                 {removeSelected}
             </div>
             <ul className="list-group list-group-flush">
