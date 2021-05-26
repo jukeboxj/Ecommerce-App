@@ -78,3 +78,6 @@ typings/
 .fusebox/
 
 
+.DS_Store
+src/.DS_Store
+src/pages/.DS_Store
