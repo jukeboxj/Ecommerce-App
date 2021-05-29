@@ -21,16 +21,27 @@ db.once("open", () => {
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'))
-
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.json())
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'../build/index.html'))
-});
+const STATIC = path.join(__dirname, '..', 'build');
+const INDEX = path.join(STATIC, 'index.html');
+
+app.use(express.static(STATIC));
+
+app.use((req, res) => {
+    res.sendFile(INDEX)
+})
+
+// app.get('*', (req, res) => {
+//     res.sendFile(INDEX)
+// });
+
 // app.get('/campgrounds', async (req, res) => {
 //     const campgrounds = await Campground.find({});
 //     res.render('campgrounds/index', { campgrounds })
@@ -71,4 +82,3 @@ app.get('*', (req, res) => {
 app.listen(8000, () => {
     console.log('Serving on port 8000')
 })
-

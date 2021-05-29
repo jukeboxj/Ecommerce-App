@@ -34,10 +34,10 @@ function getRandomArbitrary(min, max) {
 }
 
 category
-var items = Object.keys(imagesMap).reduce((acc, key , i) => {
+let items = Object.keys(imagesMap).reduce((acc, key , i) => {
 
     if(imagesMap[key].length !== 0) {
-        var newItem = {
+        let newItem = {
             price: getRandomArbitrary(1500, 10000),
             cpu: "1.3GHz Apple A6",
             camera: "8mp (3264x2448)",
