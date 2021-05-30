@@ -18,3 +18,4 @@ build/static/media/bootstrap-icons.94eeade1.woff
 build/static/media/bootstrap-icons.dfd0ea12.woff2
 .gitattributes
 .DS_Store
+backend/views/build
