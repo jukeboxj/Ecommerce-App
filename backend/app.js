@@ -1,13 +1,13 @@
-const express = require('express');
-const path = require('path');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const Items = require('./models/items');
+const express = require("express");
+const path = require("path");
+const methodOverride = require("method-override");
+const mongoose = require("mongoose");
+const Items = require("./models/items");
 
-mongoose.connect('mongodb://localhost:27017/kirkfall', {
+mongoose.connect("mongodb://localhost:27017/kirkfall", {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
@@ -19,23 +19,28 @@ db.once("open", () => {
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(express.json())
+app.use(methodOverride("_method"));
+app.use(express.json());
 
+app.set("views", __dirname + "/views");
+app.set("view engine", "jsx");
+app.engine("jsx", require("express-react-views").createEngine());
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
-
-const STATIC = path.resolve('views', 'build');
-const INDEX = path.resolve(STATIC, 'index.html');
+const STATIC = path.resolve("views", "build");
+const INDEX = path.resolve(STATIC, "index.html");
 
 app.use(express.static(STATIC));
-app.get('*', (req, res) => {
-    res.sendFile(INDEX)
+
+app.get("/makeItem", async (req, res) => {
+    const item = new Items({ title: "The Test New Item", price: 69 });
+    await item.save();
+    res.send(item);
 });
 
+app.get("*", (req, res) => {
+    res.sendFile(INDEX);
+});
 
 app.listen(8000, () => {
-    console.log('Serving on port 8000')
+    console.log("Serving on port 8000");
 });
