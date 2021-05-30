@@ -13,7 +13,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
-const STATIC = path.join('views', 'build');
+const STATIC = path.resolve('views', 'build');
 const INDEX = path.resolve(STATIC, 'index.html');
 
 app.use(express.static(STATIC));
