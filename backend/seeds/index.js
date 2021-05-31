@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const { seeds } = require("./seedhelper")
+const { seeds } = require("./seeds")
 const Items = require("../models/items")
 
 mongoose.connect("mongodb://localhost:27017/kirkfall", {
@@ -22,6 +22,7 @@ const seedDB = async () => {
             images: s.images,
             category: s.category,
             price: s.price,
+            description: s.description,
         })
         await i.save()
     }
