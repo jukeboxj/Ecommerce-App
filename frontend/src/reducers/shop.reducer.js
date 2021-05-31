@@ -3,88 +3,87 @@ import {
     STOP_SHAKE_CART,
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
-    REMOVE_PRODUCT_FROM_CART
-} from '../actions';
-import {items} from "../data/items";
+    REMOVE_PRODUCT_FROM_CART,
+} from '../actions'
+import { items } from '../data/items'
 
 const initialState = {
     products: items,
     cart: [],
-    shakeCart: false
-};
+    shakeCart: false,
+}
 
-
-const shopReducer = (state = initialState, action ) => {
-    let updatedCart;
-    let updatedItemIndex;
+const shopReducer = (state = initialState, action) => {
+    let updatedCart
+    let updatedItemIndex
 
     switch (action.type) {
         case INCREMENT_CART_ITEM_QUANTITY:
-            updatedCart = [...state.cart];
+            updatedCart = [...state.cart]
             updatedItemIndex = updatedCart.findIndex(
                 item => item.id === action.payload
-            );
+            )
 
             const incrementedItem = {
-                ...updatedCart[updatedItemIndex]
-            };
-
-            incrementedItem.quantity++;
-
-            updatedCart[updatedItemIndex] = incrementedItem;
-
-
-            return {...state, cart: updatedCart};
-
-        case DECREMENT_CART_ITEM_QUANTITY:
-            updatedCart = [...state.cart];
-            updatedItemIndex = updatedCart.findIndex(
-                item => item.id === action.payload
-            );
-
-            const decrementedItem = {
-                ...updatedCart[updatedItemIndex]
-            };
-
-            decrementedItem.quantity--;
-
-            updatedCart[updatedItemIndex] = decrementedItem;
-
-            return {...state, cart: updatedCart};
-
-        case ADD_PRODUCT_TO_CART:
-            updatedCart = [...state.cart];
-            updatedItemIndex = updatedCart.findIndex(item => item.id === action.payload.id);
-
-            if(updatedItemIndex < 0) {
-                updatedCart.push({...action.payload, quantity: 1});
-            } else {
-                const updatedItem = {
-                    ...updatedCart[updatedItemIndex]
-                };
-
-                updatedItem.quantity++;
-                updatedCart[updatedItemIndex] = updatedItem;
+                ...updatedCart[updatedItemIndex],
             }
 
-            return {...state, cart: updatedCart, shakeCart: true};
+            incrementedItem.quantity++
 
-        case STOP_SHAKE_CART:
-            return {...state, shakeCart: false}
+            updatedCart[updatedItemIndex] = incrementedItem
 
-        case REMOVE_PRODUCT_FROM_CART:
-            updatedCart = [...state.cart];
+            return { ...state, cart: updatedCart }
+
+        case DECREMENT_CART_ITEM_QUANTITY:
+            updatedCart = [...state.cart]
             updatedItemIndex = updatedCart.findIndex(
                 item => item.id === action.payload
-            );
+            )
 
-            updatedCart.splice(updatedItemIndex, 1);
+            const decrementedItem = {
+                ...updatedCart[updatedItemIndex],
+            }
 
-            return {...state, cart: updatedCart};
+            decrementedItem.quantity--
+
+            updatedCart[updatedItemIndex] = decrementedItem
+
+            return { ...state, cart: updatedCart }
+
+        case ADD_PRODUCT_TO_CART:
+            updatedCart = [...state.cart]
+            updatedItemIndex = updatedCart.findIndex(
+                item => item.id === action.payload.id
+            )
+
+            if (updatedItemIndex < 0) {
+                updatedCart.push({ ...action.payload, quantity: 1 })
+            } else {
+                const updatedItem = {
+                    ...updatedCart[updatedItemIndex],
+                }
+
+                updatedItem.quantity++
+                updatedCart[updatedItemIndex] = updatedItem
+            }
+
+            return { ...state, cart: updatedCart, shakeCart: true }
+
+        case STOP_SHAKE_CART:
+            return { ...state, shakeCart: false }
+
+        case REMOVE_PRODUCT_FROM_CART:
+            updatedCart = [...state.cart]
+            updatedItemIndex = updatedCart.findIndex(
+                item => item.id === action.payload
+            )
+
+            updatedCart.splice(updatedItemIndex, 1)
+
+            return { ...state, cart: updatedCart }
         default:
-            return state;
-
+            return state
     }
-};
+}
 
-export default shopReducer;
+export default shopReducer

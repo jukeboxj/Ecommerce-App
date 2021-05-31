@@ -1,40 +1,52 @@
-import React, { Component } from 'react';
-import {Provider} from 'react-redux';
-import {createStore } from 'redux';
-import rootReducer from './reducers';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './reducers'
 
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
-import Home from "./pages/Home/Home";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
-import ShoppingCart from "./pages/ShopingCart/ShoppingCart";
+import Home from './pages/Home/Home'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import ProductDetails from './pages/ProductDetails/ProductDetails'
+import ShoppingCart from './pages/ShopingCart/ShoppingCart'
 
-
-export const  store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 class App extends Component {
-  render() {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-            <React.Fragment>
-                <Header/>
-                <Switch>
-                    <Route exact path={'/'} render={() => {
-                        return <Redirect to={'/products'}/>
-                    }}/>
-                    <Route exact path={'/products'} component={Home}/>
-                    <Route exact path={'/products/:id'} component={ProductDetails}/>
-                    <Route exact path={'/cart'} component={ShoppingCart}/>
-                </Switch>
-                <Footer/>
-            </React.Fragment>
-            </BrowserRouter>
-        </Provider>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <BrowserRouter>
+                    <React.Fragment>
+                        <Header />
+                        <Switch>
+                            <Route exact path={'/products'} component={Home} />
+                            <Route
+                                exact
+                                path={'/products/:id'}
+                                component={ProductDetails}
+                            />
+                            <Route
+                                exact
+                                path={'/cart'}
+                                component={ShoppingCart}
+                            />
+                            <Route
+                                render={() => {
+                                    return <Redirect to={'/products'} />
+                                }}
+                            />
+                        </Switch>
+                        <Footer />
+                    </React.Fragment>
+                </BrowserRouter>
+            </Provider>
+        )
+    }
 }
 
-export default App;
+export default App
