@@ -5,10 +5,10 @@ import {
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART,
 } from '../actions'
-import { items } from '../data/items'
+// import { items } from '../data/items'
 
 const initialState = {
-    products: items,
+    products: [],
     cart: [],
     shakeCart: false,
 }

@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@popperjs/core": "^2.9.2",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.0.1",
