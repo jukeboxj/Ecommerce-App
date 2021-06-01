@@ -4,7 +4,10 @@ import {
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART,
-} from '../actions'
+    PRODUCT_LIST_REQUEST,
+    PRODUCT_LIST_SUCCESS,
+    PRODUCT_LIST_FAIL,
+} from '../actions/index'
 // import { items } from '../data/items'
 
 const initialState = {
@@ -18,6 +21,18 @@ const shopReducer = (state = initialState, action) => {
     let updatedItemIndex
 
     switch (action.type) {
+        case PRODUCT_LIST_REQUEST:
+            return { loading: true, products: [] }
+
+        case PRODUCT_LIST_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload.products,
+            }
+
+        case PRODUCT_LIST_FAIL:
+            return { loading: false, error: action.payload }
+
         case INCREMENT_CART_ITEM_QUANTITY:
             updatedCart = [...state.cart]
             updatedItemIndex = updatedCart.findIndex(

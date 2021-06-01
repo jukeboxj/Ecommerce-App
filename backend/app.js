@@ -2,7 +2,8 @@ const express = require('express')
 const path = require('path')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-const Items = require('./models/items')
+const Items = require('./models/productModel')
+const productRoutes = require('./routes/productRoutes.js')
 
 const { products } = require('./data/products')
 
@@ -28,18 +29,10 @@ app.use(methodOverride('_method'))
 app.use(express.json())
 
 app.set('views', VIEWS)
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
 
 app.use(express.static(VIEWS))
 
-app.get('/api/products', (req, res) => {
-    res.json(products)
-})
-app.get('/api/products/:id', (req, res) => {
-    const product = products.find(p => p.id == req.params.id)
-    res.json(product)
-})
+app.use('/api/products', productRoutes)
 
 // app.get('*', (req, res) => {
 //     res.sendFile(INDEX)

@@ -1,23 +1,23 @@
-const mongoose = require("mongoose")
-const { seeds } = require("./seeds")
-const Items = require("../models/items")
+const mongoose = require('mongoose')
+const { seeds } = require('./seeds')
+const Products = require('../models/productModel')
 
-mongoose.connect("mongodb://localhost:27017/kirkfall", {
+mongoose.connect('mongodb://localhost:27017/kirkfall', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
 })
 
 const db = mongoose.connection
-db.on("error", console.error.bind(console, "connection error:"))
-db.once("open", () => {
-    console.log("Database connected")
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', () => {
+    console.log('Database connected')
 })
 
 const seedDB = async () => {
-    await Items.deleteMany({})
+    await Products.deleteMany({})
     for (const s of seeds) {
-        const i = new Items({
+        const i = new Products({
             title: s.title,
             images: s.images,
             category: s.category,
