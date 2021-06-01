@@ -28,9 +28,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.json())
 
-app.set('views', VIEWS)
+// app.set('views', VIEWS)
 
-app.use(express.static(VIEWS))
+// app.use(express.static(VIEWS))
 
 app.use('/api/products', productRoutes)
 
@@ -38,6 +38,6 @@ app.use('/api/products', productRoutes)
 //     res.sendFile(INDEX)
 // })
 
-app.listen(8000, () => {
-    console.log('Serving on port 8000')
+app.listen(1000, () => {
+    console.log('Serving on port 1000')
 })

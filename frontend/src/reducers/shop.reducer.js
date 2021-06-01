@@ -4,10 +4,14 @@ import {
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART,
+} from '../actions/index'
+
+import {
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAIL,
-} from '../actions/index'
+} from '../constants/productConstants'
+
 // import { items } from '../data/items'
 
 const initialState = {

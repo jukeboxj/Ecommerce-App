@@ -1,22 +1,21 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import Product from "../../components/Product/Product";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Product from '../../components/Product/Product'
 
-import {categoryFilter} from "../../pipes/categoryFilter";
-import {orderByFilter} from "../../pipes/orderByFilter";
-import LayoutMode from "../../components/LayoutMode/LayoutMode";
-import {paginationPipe} from "../../pipes/paginationFilter";
-import Pagination from "../../components/Pagination/Pagination";
+import { categoryFilter } from '../../pipes/categoryFilter'
+import { orderByFilter } from '../../pipes/orderByFilter'
+import LayoutMode from '../../components/LayoutMode/LayoutMode'
+import { paginationPipe } from '../../pipes/paginationFilter'
+import Pagination from '../../components/Pagination/Pagination'
 
 class ProductList extends Component {
-
     state = {
-        colValue : 'col-lg-4',
-        perPage: 48,
-        currentPage: 1,
-        pagesToShow: 3,
-        gridValue: 3
-    };
+        colValue: 'col-lg-4',
+        // perPage: 48,
+        // currentPage: 1,
+        // pagesToShow: 3,
+        // gridValue: 3,
+    }
 
     // changeLayout = (n) => {
     //     this.setState({gridValue: n});
@@ -34,32 +33,28 @@ class ProductList extends Component {
     //   });
     // };
 
+    // onPrev = () => {
+    //     const updatedState = { ...this.state }
+    //     updatedState.currentPage = this.state.currentPage - 1
+    //     this.setState(updatedState)
+    // }
 
-    onPrev = () => {
-        const updatedState = {...this.state};
-        updatedState.currentPage = this.state.currentPage - 1;
-        this.setState(updatedState);
-    };
+    // onNext = () => {
+    //     this.setState({
+    //         ...this.state,
+    //         currentPage: this.state.currentPage + 1,
+    //     })
+    // }
 
-
-    onNext = () => {
-        this.setState({
-            ...this.state,
-            currentPage: this.state.currentPage + 1
-        });
-    };
-
-    goPage = (n) => {
-        this.setState({
-            ...this.state,
-            currentPage: n
-        });
-    };
-
+    // goPage = n => {
+    //     this.setState({
+    //         ...this.state,
+    //         currentPage: n,
+    //     })
+    // }
 
     render() {
-
-        let isActive = this.state.colValue[this.state.colValue.length -1];
+        let isActive = this.state.colValue[this.state.colValue.length - 1]
 
         return (
             <div className="col-lg-9">
@@ -75,12 +70,19 @@ class ProductList extends Component {
                     </div>
                 </div> */}
                 <div className="row">
-                    {paginationPipe(this.props.products, this.state).map(product =>{
-                        let classes = `${this.state.colValue} col-md-6 mb-4`;
-                        return (<div className={classes}>
-                            <Product key={product.id} product={product} />
-                        </div>)
-                    })}
+                    {paginationPipe(this.props.products, this.state).map(
+                        product => {
+                            let classes = `${this.state.colValue} col-md-6 mb-4`
+                            return (
+                                <div className={classes}>
+                                    <Product
+                                        key={product.id}
+                                        product={product}
+                                    />
+                                </div>
+                            )
+                        }
+                    )}
                 </div>
                 {/* <div className="d-flex justify-content-end">
                     <Pagination
@@ -94,19 +96,18 @@ class ProductList extends Component {
                     />
                 </div> */}
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const categorys = state.categoryFilter;
-    const orderBy = state.orderBy;
+    const categorys = state.categoryFilter
+    const orderBy = state.orderBy
 
-    const filterByCategoryArr = categoryFilter(state.shop.products, categorys);
-    const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy);
+    const filterByCategoryArr = categoryFilter(state.shop.products, categorys)
+    const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy)
 
+    return { products: filterByOrderArr }
+}
 
-    return {products: filterByOrderArr }
-};
-
-export default connect(mapStateToProps, null)(ProductList);
+export default connect(mapStateToProps, null)(ProductList)

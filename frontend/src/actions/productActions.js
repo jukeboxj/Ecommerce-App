@@ -9,10 +9,13 @@ export const listProducts =
     (keyword = '') =>
     async dispatch => {
         try {
+
             dispatch({ type: PRODUCT_LIST_REQUEST })
-
+            console.log('product_list is dispatched')
+            
             const { data } = await axios.get(`/api/products?keyword=${keyword}`)
-
+            console.log('api/products/ responded w/ : ', data)
+            
             dispatch({
                 type: PRODUCT_LIST_SUCCESS,
                 payload: data,

@@ -1,5 +1,6 @@
 {
   "name": "ecommerce",
+  "proxy": "http://127.0.0.1:1000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,10 +19,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "PORT=4000 react-scripts start",
+    "start": "PORT=2000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

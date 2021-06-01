@@ -3,22 +3,25 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
-const Header = ({ cartCount, shakeCart }) => {
+const Header = ({ cart, shakeCart, loading, error }) => {
+
+    const cartCount = cart ? cart.reduce((a, b) => a + b.quantity, 0) : 0
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
                 <NavLink className="navbar-brand" to="/">
                     Kirkfall
                 </NavLink>
-                <div className={shakeCart ? 'wiggle' : ''}>
+                <div>
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
+                        <li className={`nav-item ${shakeCart & 'wiggle'}`}>
                             <NavLink className="nav-link" to={'/cart'}>
                                 <i
                                     className="bi bi-cart-fill me-2"
                                     aria-hidden="true"
                                 />
-                                Cart {cartCount ? `(${cartCount})` : ''}
+                                Cart {cart ? `(${cartCount})` : ''}
                             </NavLink>
                         </li>
                     </ul>
@@ -30,8 +33,10 @@ const Header = ({ cartCount, shakeCart }) => {
 
 const mapStateToProps = state => {
     return {
-        cartCount: state.shop.cart.reduce((a, b) => a + b.quantity, 0),
+        cart: state.shop.cart,
         shakeCart: state.shop.shakeCart,
+        loading: state.shop.loading,
+        error: state.shop.error
     }
 }
 
