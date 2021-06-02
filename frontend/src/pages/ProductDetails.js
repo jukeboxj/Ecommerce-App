@@ -4,9 +4,6 @@ import ProductDetailComponent from '../components/ProductDetail/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
 
 const ProductDetails = props => {
-    console.log(props)
-
-
     const { product } = props
     const { images } = product
 
@@ -23,12 +20,11 @@ const ProductDetails = props => {
 }
 
 const mapStateToProps = (state, props) => {
-
     const product = state.productList.products.find(
         p => p._id === props.match.params._id
     )
 
-    return {product}
+    return { product }
 }
 
 export default connect(mapStateToProps, null)(ProductDetails)
