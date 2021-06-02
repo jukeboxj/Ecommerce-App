@@ -6,15 +6,14 @@ export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
 
 export const addProductToCart = product => {
-    return {
-        type: ADD_PRODUCT_TO_CART,
-        payload: product,
-    }
-}
-
-export const stopShakeCart = () => {
-    return {
-        type: STOP_SHAKE_CART,
+    return dispatch => {
+        dispatch({
+            type: ADD_PRODUCT_TO_CART,
+            payload: product,
+        })
+        setTimeout(() => {
+            dispatch({ type: STOP_SHAKE_CART })
+        }, 500)
     }
 }
 

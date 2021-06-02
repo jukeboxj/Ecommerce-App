@@ -15,7 +15,7 @@ const App = () => {
     const { loading, error } = useSelector(state => state.productList)
 
     useEffect(() => {
-        dispatch(listProducts(''))
+        dispatch(listProducts())
     }, [dispatch])
 
     return (

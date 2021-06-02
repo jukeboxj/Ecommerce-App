@@ -25,7 +25,3 @@ export const listProducts =
             })
         }
     }
-
-export const handleShakeCart = () => {
-
-}

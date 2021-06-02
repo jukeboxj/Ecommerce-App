@@ -1,32 +1,17 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {formatMoney} from "../../pipes/priceFormatter";
-import {addProductToCart, stopShakeCart} from "../../actions/shopActions";
+import React from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { formatMoney } from '../../pipes/priceFormatter'
+import { addProductToCart } from '../../actions/shopActions'
 
-const ProductDetail = (props) => {
+const ProductDetail = props => {
+    const { product } = props
+    const { title, category, price, description } = product
 
-    const {
-        title,
-        images,
-        category,
-        price,
-        cpu,
-        camera,
-        size,
-        weight,
-        display,
-        battery,
-        memory,
-        description,
-        id
-    } = props.product;
+    const dispatch = useDispatch()
 
-    const onCart = () => {
-        props.dispatch(addProductToCart(props.product));
-        setTimeout(() => {
-            props.dispatch(stopShakeCart())
-        }, 500)
-    };
+    const handleAddToCart = product => {
+        dispatch(addProductToCart(product))
+    }
 
     return (
         <aside className="col-sm-7">
@@ -35,44 +20,23 @@ const ProductDetail = (props) => {
 
                 <p className="price-detail-wrap">
                     <span className="price h3 text-warning">
-                        <span className="currency">$</span><span className="num">{formatMoney(price)}</span>
+                        <span className="currency">$</span>
+                        <span className="num">{formatMoney(price)}</span>
                     </span>
                 </p>
                 <dl className="item-property">
                     <dt>Description</dt>
-                    <dd><p className="text-capitalize">{description}</p></dd>
+                    <dd>
+                        <p className="text-capitalize">{description}</p>
+                    </dd>
                 </dl>
                 <dl className="param param-feature">
                     <dt>Category</dt>
                     <dd className="text-capitalize">{category}</dd>
                 </dl>
-                {/* <dl className="param param-feature">
-                    <dt>Size</dt>
-                    <dd>{size}</dd>
-                </dl>
-                <dl className="param param-feature">
-                    <dt>Camera</dt>
-                    <dd>{camera}</dd>
-                </dl>
-                <dl className="param param-feature">
-                    <dt>CPU</dt>
-                    <dd>{cpu}</dd>
-                </dl>
-                <dl className="param param-feature">
-                    <dt>Memory</dt>
-                    <dd>{memory}</dd>
-                </dl>
-                <dl className="param param-feature">
-                    <dt>Display</dt>
-                    <dd>{display}</dd>
-                </dl>
-                <dl className="param param-feature">
-                    <dt>Battery</dt>
-                    <dd>{battery}</dd>
-                </dl> */}
-             
+
                 <button
-                    onClick={onCart}
+                    onClick={() => handleAddToCart(product)}
                     className="btn btn-lg btn-outline-primary text-uppercase"
                 >
                     <i class="bi bi-cart-plus-fill me-2" />
@@ -80,7 +44,7 @@ const ProductDetail = (props) => {
                 </button>
             </article>
         </aside>
-    );
-};
+    )
+}
 
-export default connect()(ProductDetail);
+export default connect()(ProductDetail)

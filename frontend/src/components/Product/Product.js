@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
@@ -7,21 +7,16 @@ import classNames from 'classnames'
 
 import './Product.scss'
 import SlideDots from '../SlideDots/SlideDots'
-import { addProductToCart, stopShakeCart } from '../../actions/shopActions'
+import { addProductToCart } from '../../actions/shopActions'
 
 const Product = props => {
-    const { title, price, images, description, _id } = props.product
+    const { product } = props
+    const { title, price, images, description, _id } = product
 
+    const dispatch = useDispatch()
     const imageRef = React.createRef()
     const [img, setImg] = useState(images[0])
     const [aItem, setAItem] = useState(0)
-
-    const handleAddToCart = () => {
-        props.dispatch(addProductToCart(props.product))
-        setTimeout(() => {
-            props.dispatch(stopShakeCart())
-        }, 500)
-    }
 
     const handleImageChange = e => {
         let clientX
@@ -61,6 +56,10 @@ const Product = props => {
         setAItem(i)
     }
 
+    const handleAddToCart = product => {
+        dispatch(addProductToCart(product))
+    }
+
     return (
         <div className="card h-100 product">
             <Link to={`/products/${_id}`} className="product__link">
@@ -89,7 +88,7 @@ const Product = props => {
                     {description} ...
                 </p>
                 <button
-                    onClick={handleAddToCart}
+                    onClick={()=>handleAddToCart(product)}
                     className="btn btn-outline-primary product__add-to-cart"
                 >
                     Add to cart
