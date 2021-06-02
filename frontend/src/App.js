@@ -24,7 +24,12 @@ const App = () => {
                 <React.Fragment>
                     <Header />
                     {loading ? (
-                        <h1>IT IS LOADING</h1>
+                        <div
+                            class="position-absolute top-50 start-50 translate-middle-y spinner-grow text-success"
+                            role="status"
+                        >
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
                     ) : error ? (
                         <h1>ERROR OCCURRED - {error}</h1>
                     ) : (
