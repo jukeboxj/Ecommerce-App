@@ -1,33 +1,32 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import ProductDetailComponent from '../components/ProductDetail/ProductDetail';
-import ProductSlider from "../components/ProductSlider/ProductSlider";
+import React from 'react'
+import { connect } from 'react-redux'
+import ProductDetailComponent from '../components/ProductDetail/ProductDetail'
+import ProductSlider from '../components/ProductSlider/ProductSlider'
 
-const ProductDetails = (props) => {
+const ProductDetails = props => {
+    const { product } = props
+    const { images } = product
 
-    console.log(props);
+    console.log(props.product)
 
     return (
-        <div className="container" style={{padding: '6rem 0'}}>
-            <div className="card">
+        <div className="container" style={{ padding: '6rem 0' }}>
+            {/* <div className="card">
                 <div className="row">
-                    <ProductSlider images={props.product.images}/>
-                    <ProductDetailComponent product={props.product}/>
+                    <ProductSlider images={images} />
+                    <ProductDetailComponent product={product} />
                 </div>
-            </div>
+            </div> */}
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = (state, props) =>  {
+const mapStateToProps = (state, props) => {
+    const product = state.productList.products.find(
+        product => product._id === props.match.params._id
+    )
 
-    const product = state.productList.products.find(product => product._id === props.match.params._id);
+    return product
+}
 
-    return {
-        product
-    }
-};
-
-
-
-export default connect(mapStateToProps, null)(ProductDetails);
+export default connect(mapStateToProps, null)(ProductDetails)

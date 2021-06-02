@@ -56,7 +56,7 @@ const Product = props => {
         setAItem(i)
     }
 
-    const handleAddToCart = product => {
+    const handleAddToCart = () => {
         dispatch(addProductToCart(product))
     }
 
@@ -88,7 +88,7 @@ const Product = props => {
                     {description} ...
                 </p>
                 <button
-                    onClick={() => handleAddToCart(product)}
+                    onClick={handleAddToCart}
                     className="btn btn-outline-primary product__add-to-cart"
                 >
                     Add to cart
