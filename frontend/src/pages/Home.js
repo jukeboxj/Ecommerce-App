@@ -9,7 +9,7 @@ const Home = () => {
         <>
             (
                 <React.Fragment>
-                    <div className="container" style={{ paddingTop: '6rem' }}>
+                    <div className="container mt-5" >
                         <div className="row">
                             <FilterBar />
                             <ProductList />

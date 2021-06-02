@@ -4,29 +4,31 @@ import ProductDetailComponent from '../components/ProductDetail/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
 
 const ProductDetails = props => {
+    console.log(props)
+
+
     const { product } = props
     const { images } = product
 
-    console.log(props.product)
-
     return (
         <div className="container" style={{ padding: '6rem 0' }}>
-            {/* <div className="card">
+            <div className="card">
                 <div className="row">
                     <ProductSlider images={images} />
                     <ProductDetailComponent product={product} />
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
 
 const mapStateToProps = (state, props) => {
+
     const product = state.productList.products.find(
-        product => product._id === props.match.params._id
+        p => p._id === props.match.params._id
     )
 
-    return product
+    return {product}
 }
 
 export default connect(mapStateToProps, null)(ProductDetails)

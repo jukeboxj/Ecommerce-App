@@ -26,15 +26,14 @@ const App = () => {
                     <Header />
                     {loading ? (
                         <Spinner />
-                    ) : 
-                    error ? (
+                    ) : error ? (
                         <h1>ERROR OCCURRED - {error}</h1>
                     ) : (
                         <Switch>
                             <Route exact path={'/products'} component={Home} />
                             <Route
                                 exact
-                                path={'/products/:id'}
+                                path={'/products/:_id'}
                                 component={ProductDetails}
                             />
                             <Route
