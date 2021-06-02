@@ -1,11 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import className from 'classnames'
 import './Header.scss'
 
 const Header = () => {
     const { shakeCart } = useSelector(state => state.shop)
     const { loading, error } = useSelector(state => state.productList)
+
+    // prettier-ignore
+    const wiggle = className('nav-item', { 'wiggle': shakeCart })
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -15,7 +19,7 @@ const Header = () => {
                 </NavLink>
                 <div>
                     <ul className="navbar-nav ms-auto">
-                        <li className={`nav-item ${shakeCart & 'wiggle'}`}>
+                        <li className={wiggle} key="cart">
                             <NavLink className="nav-link" to={'/cart'}>
                                 <i
                                     className="bi bi-cart-fill me-2"
