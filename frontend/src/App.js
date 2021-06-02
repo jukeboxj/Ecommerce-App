@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Home from './pages/Home'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import Spinner from './components/Spinner/Spinner'
 import ProductDetails from './pages/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart'
 
@@ -24,13 +25,9 @@ const App = () => {
                 <React.Fragment>
                     <Header />
                     {loading ? (
-                        <div
-                            class="position-absolute top-50 start-50 translate-middle-y spinner-grow text-success"
-                            role="status"
-                        >
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    ) : error ? (
+                        <Spinner />
+                    ) : 
+                    error ? (
                         <h1>ERROR OCCURRED - {error}</h1>
                     ) : (
                         <Switch>

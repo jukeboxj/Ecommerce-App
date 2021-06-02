@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 
 import './Product.scss'
 import SlideDots from '../SlideDots/SlideDots'
@@ -88,7 +88,7 @@ const Product = props => {
                     {description} ...
                 </p>
                 <button
-                    onClick={()=>handleAddToCart(product)}
+                    onClick={() => handleAddToCart(product)}
                     className="btn btn-outline-primary product__add-to-cart"
                 >
                     Add to cart
