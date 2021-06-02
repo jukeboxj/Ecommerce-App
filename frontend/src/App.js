@@ -12,7 +12,7 @@ import { listProducts } from './actions/productActions'
 
 const App = () => {
     const dispatch = useDispatch()
-    const { loading, error } = useSelector(state => state.shop)
+    const { loading, error } = useSelector(state => state.productList)
 
     useEffect(() => {
         dispatch(listProducts(''))

@@ -4,7 +4,7 @@ import {
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART,
-} from '../actions/index'
+} from '../actions/shopActions'
 
 const initialState = {
     cart: [],

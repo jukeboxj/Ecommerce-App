@@ -1,100 +1,102 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {formatMoney} from "../../pipes/priceFormatter";
-import {cumulativeOffSet} from "../../utilities/cumulativeOffset";
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { formatMoney } from '../../pipes/priceFormatter'
+import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
+import classNames from 'classnames'
 
-import './Product.scss';
-import SlideDots from "../SlideDots/SlideDots";
-import {addProductToCart, stopShakeCart} from "../../actions";
+import './Product.scss'
+import SlideDots from '../SlideDots/SlideDots'
+import { addProductToCart, stopShakeCart } from '../../actions/shopActions'
 
+const Product = props => {
+    const { title, price, images, description, _id } = props.product
 
-const Product = (props) => {
-
-    const {
-        title,
-        price,
-        images,
-        description,
-        _id,
-    } = props.product;
-
-    const imageRef = React.createRef();
-    const [img, setImg] = useState(images[0]);
-    const [aItem, setAItem] = useState(0);
+    const imageRef = React.createRef()
+    const [img, setImg] = useState(images[0])
+    const [aItem, setAItem] = useState(0)
 
     const handleAddToCart = () => {
-        props.dispatch(addProductToCart(props.product));
+        props.dispatch(addProductToCart(props.product))
         setTimeout(() => {
             props.dispatch(stopShakeCart())
         }, 500)
     }
 
-    const handleImageChange = (e) => {
+    const handleImageChange = e => {
+        let clientX
 
-        let  clientX;
-
-        if(e.type === 'touchmove') {
-            clientX = e.touches[0].clientX;
+        if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX
         } else {
-            clientX = e.clientX;
+            clientX = e.clientX
         }
 
-        const currentX = clientX - cumulativeOffSet(imageRef.current).left;
+        const currentX = clientX - cumulativeOffSet(imageRef.current).left
 
         // console.dir(imageRef.current);
 
-        const part = imageRef.current.clientWidth / images.length;
-       // console.log(Math.ceil(currentX / part) - 1);
+        const part = imageRef.current.clientWidth / images.length
+        // console.log(Math.ceil(currentX / part) - 1);
 
-        let imgIndex = Math.ceil(currentX / part) - 1;
+        let imgIndex = Math.ceil(currentX / part) - 1
         if (imgIndex < 0) {
-            imgIndex = 0;
+            imgIndex = 0
         }
 
         if (imgIndex >= images.length) {
-            imgIndex = images.length - 1;
+            imgIndex = images.length - 1
         }
-        setAItem(imgIndex);
-        setImg(images[imgIndex]);
-    };
+        setAItem(imgIndex)
+        setImg(images[imgIndex])
+    }
 
-    const handleMouseOut = (e) => {
-        setImg(images[0]);
-        setAItem(0);
-    };
+    const handleMouseOut = e => {
+        setImg(images[0])
+        setAItem(0)
+    }
 
-    const changeImage = (i) => {
-        setImg(images[i]);
-        setAItem(i);
+    const changeImage = i => {
+        setImg(images[i])
+        setAItem(i)
     }
 
     return (
         <div className="card h-100 product">
             <Link to={`/products/${_id}`} className="product__link">
                 <img
-                onMouseMove={handleImageChange}
-                onMouseOut={handleMouseOut}
-                onTouchMove={handleImageChange}
-                onTouchEnd={handleMouseOut}
-                className="card-img-top product__img" src={img} alt={title} ref={imageRef}/>
-                <SlideDots len={images.length} activeItem={aItem} changeItem={changeImage}/>
+                    onMouseMove={handleImageChange}
+                    onMouseOut={handleMouseOut}
+                    onTouchMove={handleImageChange}
+                    onTouchEnd={handleMouseOut}
+                    className="card-img-top product__img"
+                    src={img}
+                    alt={title}
+                    ref={imageRef}
+                />
+                <SlideDots
+                    len={images.length}
+                    activeItem={aItem}
+                    changeItem={changeImage}
+                />
             </Link>
             <div className="card-body product__text">
-                <h4 className="card-title product__title">
+                <h4 classNames="card-title product__title">
                     <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>
                 <h6 className="product__price">${formatMoney(price)}</h6>
-                <p className="card-text product__description">{description} ...</p>
+                <p className="card-text product__description">
+                    {description} ...
+                </p>
                 <button
                     onClick={handleAddToCart}
-                    className="btn btn-outline-primary product__add-to-cart">
-                        Add to cart
+                    className="btn btn-outline-primary product__add-to-cart"
+                >
+                    Add to cart
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default connect()(Product);
-
+export default connect()(Product)

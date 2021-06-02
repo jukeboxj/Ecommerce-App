@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {formatMoney} from "../../pipes/priceFormatter";
-import {addProductToCart, stopShakeCart} from "../../actions";
+import {addProductToCart, stopShakeCart} from "../../actions/shopActions";
 
 const ProductDetail = (props) => {
 

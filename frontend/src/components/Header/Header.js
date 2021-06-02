@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
 const Header = () => {
-    const { shakeCart, loading, error } = useSelector(state => state.shop)
+    const { shakeCart } = useSelector(state => state.shop)
+    const { loading, error } = useSelector(state => state.productList)
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
