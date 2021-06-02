@@ -76,7 +76,7 @@ class ProductList extends Component {
                             return (
                                 <div className={classes}>
                                     <Product
-                                        key={product.id}
+                                        key={product._id}
                                         product={product}
                                     />
                                 </div>

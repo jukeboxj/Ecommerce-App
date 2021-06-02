@@ -16,7 +16,7 @@ const Product = (props) => {
         price,
         images,
         description,
-        id,
+        _id,
     } = props.product;
 
     const imageRef = React.createRef();
@@ -71,7 +71,7 @@ const Product = (props) => {
 
     return (
         <div className="card h-100 product">
-            <Link to={`/products/${id}`} className="product__link">
+            <Link to={`/products/${_id}`} className="product__link">
                 <img
                 onMouseMove={handleImageChange}
                 onMouseOut={handleMouseOut}
@@ -82,7 +82,7 @@ const Product = (props) => {
             </Link>
             <div className="card-body product__text">
                 <h4 className="card-title product__title">
-                    <Link to={`/products/${id}`}>{title}</Link>
+                    <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>
                 <h6 className="product__price">${formatMoney(price)}</h6>
                 <p className="card-text product__description">{description} ...</p>
