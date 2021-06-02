@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 
     const categoryItemsCount = {};
 
-    state.shop.products.forEach(p => {
+    state.productList.products.forEach(p => {
         categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1;
     });
 

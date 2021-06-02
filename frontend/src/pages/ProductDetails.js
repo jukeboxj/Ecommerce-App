@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ProductDetailComponent from '../../components/ProductDetail/ProductDetail';
-import ProductSlider from "../../components/ProductSlider/ProductSlider";
+import ProductDetailComponent from '../components/ProductDetail/ProductDetail';
+import ProductSlider from "../components/ProductSlider/ProductSlider";
 
 const ProductDetails = (props) => {
 

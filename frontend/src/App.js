@@ -1,46 +1,56 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from './reducers'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Home from './pages/Home'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import ProductDetails from './pages/ProductDetails/ProductDetails'
-import ShoppingCart from './pages/ShopingCart/ShoppingCart'
+import ProductDetails from './pages/ProductDetails'
+import ShoppingCart from './pages/ShoppingCart'
 
-export const store = createStore(
-    rootReducer,
-    composeWithDevTools(applyMiddleware(thunk))
-)
+import { listProducts } from './actions/productActions'
 
 const App = () => {
+    const dispatch = useDispatch()
+    const { loading, error } = useSelector(state => state.shop)
+
+    useEffect(() => {
+        dispatch(listProducts(''))
+    }, [dispatch])
+
     return (
-        <Provider store={store}>
+        <>
             <BrowserRouter>
                 <React.Fragment>
                     <Header />
-                    <Switch>
-                        <Route exact path={'/products'} component={Home} />
-                        <Route
-                            exact
-                            path={'/products/:id'}
-                            component={ProductDetails}
-                        />
-                        <Route exact path={'/cart'} component={ShoppingCart} />
-                        <Route
-                            render={() => {
-                                return <Redirect to={'/products'} />
-                            }}
-                        />
-                    </Switch>
+                    {loading ? (
+                        <h1>IT IS LOADING</h1>
+                    ) : error ? (
+                        <h1>ERROR OCCURRED - {error}</h1>
+                    ) : (
+                        <Switch>
+                            <Route exact path={'/products'} component={Home} />
+                            <Route
+                                exact
+                                path={'/products/:id'}
+                                component={ProductDetails}
+                            />
+                            <Route
+                                exact
+                                path={'/cart'}
+                                component={ShoppingCart}
+                            />
+                            <Route
+                                render={() => {
+                                    return <Redirect to={'/products'} />
+                                }}
+                            />
+                        </Switch>
+                    )}
                     <Footer />
                 </React.Fragment>
             </BrowserRouter>
-        </Provider>
+        </>
     )
 }
 

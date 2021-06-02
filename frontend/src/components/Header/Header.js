@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
-const Header = ({ cart, shakeCart, loading, error }) => {
-
-    const cartCount = cart ? cart.reduce((a, b) => a + b.quantity, 0) : 0
+const Header = () => {
+    const { shakeCart, loading, error } = useSelector(state => state.shop)
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -21,7 +20,7 @@ const Header = ({ cart, shakeCart, loading, error }) => {
                                     className="bi bi-cart-fill me-2"
                                     aria-hidden="true"
                                 />
-                                Cart {cart ? `(${cartCount})` : ''}
+                                Cart
                             </NavLink>
                         </li>
                     </ul>
@@ -31,16 +30,7 @@ const Header = ({ cart, shakeCart, loading, error }) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        cart: state.shop.cart,
-        shakeCart: state.shop.shakeCart,
-        loading: state.shop.loading,
-        error: state.shop.error
-    }
-}
-
-export default connect(mapStateToProps, null)(Header)
+export default Header
 
 /*
 *                         <li className="nav-item active">
