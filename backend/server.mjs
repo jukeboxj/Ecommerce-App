@@ -1,11 +1,9 @@
-const express = require('express')
-const path = require('path')
-const methodOverride = require('method-override')
-const mongoose = require('mongoose')
-const Items = require('./models/productModel')
-const productRoutes = require('./routes/productRoutes.js')
+import express from 'express'
+import path from 'path'
+import methodOverride from 'method-override'
+import mongoose from 'mongoose'
 
-const { products } = require('./data/products')
+import productRoutes from './routes/productRoutes.mjs'
 
 mongoose.connect('mongodb://localhost:27017/kirkfall', {
     useNewUrlParser: true,
@@ -20,6 +18,7 @@ db.once('open', () => {
 })
 
 const app = express()
+const __dirname = path.resolve()
 
 const VIEWS = path.join(__dirname, '../frontend/build')
 const INDEX = path.resolve(VIEWS, 'index.html')

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const { seeds } = require('./seeds')
-const Products = require('../models/productModel')
+import mongoose from 'mongoose'
+import { seeds } from './seeds.mjs'
+import Products from '../models/productModel.mjs'
 
 mongoose.connect('mongodb://localhost:27017/kirkfall', {
     useNewUrlParser: true,
