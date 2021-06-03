@@ -4,9 +4,6 @@ import Product from '../../components/Product/Product'
 
 import { categoryFilter } from '../../pipes/categoryFilter'
 import { orderByFilter } from '../../pipes/orderByFilter'
-import LayoutMode from '../../components/LayoutMode/LayoutMode'
-import { paginationPipe } from '../../pipes/paginationFilter'
-import Pagination from '../../components/Pagination/Pagination'
 
 class ProductList extends Component {
     render() {
