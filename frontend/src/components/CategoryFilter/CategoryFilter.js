@@ -1,47 +1,51 @@
-import React, {Component, useState} from 'react';
-import {connect} from 'react-redux';
-import './CategoryFilter.scss';
-import {categories} from "../../data/categories";
-import {addCategoryToFilter, removeCategoryFromFilter, removeAllCategoryFromFilter} from "../../actions";
+import React, { Component, useState } from 'react'
+import { connect } from 'react-redux'
+import './CategoryFilter.scss'
+import { categories } from '../../data/categories'
+import {
+    addCategoryToFilter,
+    removeCategoryFromFilter,
+    removeAllCategoryFromFilter,
+} from '../../actions'
+import { v4 as uuidv4 } from 'uuid'
 
+const CategoryFilter = props => {
+    let removeSelected
+    const { dispatch, categoryItemsCount } = props
+    const [selected, setSelected] = useState('')
 
-const CategoryFilter = (props) => {
+    const handleSelectBox = e => {
+        const name = e.target.name
+        const value = e.target.checked
+        setSelected(value)
 
-    let removeSelected;
-    const {dispatch, categoryItemsCount} = props;
-    const [selected, setSelected] = useState('');
-
-    const handleSelectBox = (e) => {
-        const name = e.target.name;
-        const value = e.target.checked;
-        setSelected(value);
-
-        if(e.target.checked) {
-            dispatch(addCategoryToFilter(name));
+        if (e.target.checked) {
+            dispatch(addCategoryToFilter(name))
         } else {
-            dispatch(removeCategoryFromFilter(name));
+            dispatch(removeCategoryFromFilter(name))
         }
-    };
+    }
 
-    const removeFilter = (e) => {
-
-        categories.forEach(
-            b => {
-                const btn = document.getElementsByName(b);
-                //btn yields a nodelist, but all btn names are unique
-                btn[0].checked = false;
-            }
-        )
+    const removeFilter = e => {
+        categories.forEach(b => {
+            const btn = document.getElementsByName(b)
+            //btn yields a nodelist, but all btn names are unique
+            btn[0].checked = false
+        })
 
         dispatch(removeAllCategoryFromFilter())
-        setSelected('');
-    };
+        setSelected('')
+    }
 
-    if(selected) {
-        removeSelected  =  
-            <span onClick={removeFilter} className="text-remove-selected text-right">
+    if (selected) {
+        removeSelected = (
+            <span
+                onClick={removeFilter}
+                className="text-remove-selected text-right"
+            >
                 Remove
             </span>
+        )
     }
 
     return (
@@ -52,12 +56,14 @@ const CategoryFilter = (props) => {
             </div>
             <ul className="list-group list-group-flush">
                 {categories.map(category => (
-                    <li className="list-group-item flex-50">
-                        <label className="custom-checkbox text-capitalize fs-6"> {category} ({categoryItemsCount[category]})
-                            <input 
+                    <li className="list-group-item flex-50" key={uuidv4()}>
+                        <label className="custom-checkbox text-capitalize fs-6">
+                            {' '}
+                            {category} ({categoryItemsCount[category]})
+                            <input
                                 type="checkbox"
                                 name={category}
-                                className="custom-checkbox__input" 
+                                className="custom-checkbox__input"
                                 onInput={handleSelectBox}
                             />
                             <span className="custom-checkbox__span"></span>
@@ -66,23 +72,19 @@ const CategoryFilter = (props) => {
                 ))}
             </ul>
         </div>
-    );
+    )
+}
 
-};
+const mapStateToProps = state => {
+    const categoryItemsCount = {}
 
-const mapStateToProps = (state) => {
-
-    const categoryItemsCount = {};
-
-    state.productList.products.forEach(p => {
-        categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1;
-    });
-
+    state.product.products.forEach(p => {
+        categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1
+    })
 
     return {
-        categoryItemsCount
+        categoryItemsCount,
     }
+}
 
-};
-
-export default connect(mapStateToProps)(CategoryFilter);
+export default connect(mapStateToProps)(CategoryFilter)

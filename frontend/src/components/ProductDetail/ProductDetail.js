@@ -3,10 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { addProductToCart } from '../../actions/shopActions'
 
-const ProductDetail = props => {
-    const { product } = props
-    const { title, category, price, description } = product
-
+const ProductDetail = ({ product }) => {
     const dispatch = useDispatch()
 
     const handleAddToCart = () => {
@@ -16,23 +13,25 @@ const ProductDetail = props => {
     return (
         <aside className="col-sm-7">
             <article className="card-body p-5">
-                <h3 className="title mb-3">{title}</h3>
+                <h3 className="title mb-3">{product.title}</h3>
 
                 <p className="price-detail-wrap">
                     <span className="price h3 text-warning">
                         <span className="currency">$</span>
-                        <span className="num">{formatMoney(price)}</span>
+                        <span className="num">
+                            {product.price ? formatMoney(product.price) : null}
+                        </span>
                     </span>
                 </p>
                 <dl className="item-property">
                     <dt>Description</dt>
                     <dd>
-                        <p className="text-capitalize">{description}</p>
+                        <p className="text-capitalize">{product.description}</p>
                     </dd>
                 </dl>
                 <dl className="param param-feature">
                     <dt>Category</dt>
-                    <dd className="text-capitalize">{category}</dd>
+                    <dd className="text-capitalize">{product.category}</dd>
                 </dl>
 
                 <button

@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import Home from './pages/Home'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import Spinner from './components/Spinner/Spinner'
 import ProductDetails from './pages/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart'
-
 import { listProducts } from './actions/productActions'
 
 const App = () => {
     const dispatch = useDispatch()
-    const { loading, error } = useSelector(state => state.productList)
 
     useEffect(() => {
         dispatch(listProducts())
@@ -24,30 +21,20 @@ const App = () => {
             <BrowserRouter>
                 <React.Fragment>
                     <Header />
-                    {loading ? (
-                        <Spinner />
-                    ) : error ? (
-                        <h1>ERROR OCCURRED - {error}</h1>
-                    ) : (
-                        <Switch>
-                            <Route exact path={'/products'} component={Home} />
-                            <Route
-                                exact
-                                path={'/products/:_id'}
-                                component={ProductDetails}
-                            />
-                            <Route
-                                exact
-                                path={'/cart'}
-                                component={ShoppingCart}
-                            />
-                            <Route
-                                render={() => {
-                                    return <Redirect to={'/products'} />
-                                }}
-                            />
-                        </Switch>
-                    )}
+                    <Switch>
+                        <Route exact path={'/products'} component={Home} />
+                        <Route
+                            exact
+                            path={'/products/:_id'}
+                            component={ProductDetails}
+                        />
+                        <Route exact path={'/cart'} component={ShoppingCart} />
+                        <Route
+                            render={() => {
+                                return <Redirect push to={'/products'} />
+                            }}
+                        />
+                    </Switch>
                     <Footer />
                 </React.Fragment>
             </BrowserRouter>

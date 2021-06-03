@@ -1,20 +1,20 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import className from 'classnames'
 import './Header.scss'
 
 const Header = () => {
-    const { shakeCart } = useSelector(state => state.shop)
-    const { loading, error } = useSelector(state => state.productList)
+    const shakeCart = useSelector(state => state.shop.shakeCart)
+    const { loading, error, products } = useSelector(state => state.product)
 
     // prettier-ignore
     const wiggle = className('nav-item', { 'wiggle': shakeCart })
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-0">
             <div className="container">
-                <NavLink className="navbar-brand" to="/">
+                <NavLink className="navbar-brand" push to={'/products'}>
                     Kirkfall
                 </NavLink>
                 <div>
@@ -36,20 +36,3 @@ const Header = () => {
 }
 
 export default Header
-
-/*
-*                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home
-                                <span className="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Services</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
-                        </li>
-* */

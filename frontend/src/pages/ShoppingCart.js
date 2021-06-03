@@ -1,12 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { formatMoney } from '../pipes/priceFormatter'
 import CartItem from '../components/CartItem/CartItem'
 
 const ShoppingCart = props => {
+    const cart = useSelector(state => state.shop.cart)
+    const cartItemCount = cart.reduce((count, curItem) => {
+        return count + curItem.quantity
+    }, 0)
+    const totalPrice = cart.reduce((count, curItem) => {
+        return count + curItem.price * curItem.quantity
+    }, 0)
+
     return (
         <>
-            <div className="container pt-5 pb-5">
+            <div className="container pb-5">
                 <div className="card shopping-cart">
                     <div className="card-header bg-dark text-light">
                         <i
@@ -17,8 +25,8 @@ const ShoppingCart = props => {
                         <div className="clearfix"></div>
                     </div>
                     <ul className="list-group list-group-flush">
-                        {props.cartItemCount ? (
-                            props.cartItems.map(cart => (
+                        {cartItemCount ? (
+                            cart.map(cart => (
                                 <CartItem {...cart} img={cart.images[0]} />
                             ))
                         ) : (
@@ -30,8 +38,7 @@ const ShoppingCart = props => {
                     <div className="card-footer">
                         <div className="text-end" style={{ margin: '10px' }}>
                             <div style={{ margin: '5px' }}>
-                                Total price:{' '}
-                                <b>${formatMoney(props.totalPrice)}</b>
+                                Total price: <b>${formatMoney(totalPrice)}</b>
                             </div>
                         </div>
                     </div>
@@ -41,18 +48,4 @@ const ShoppingCart = props => {
     )
 }
 
-const mapStateToProps = state => {
-    console.log(state, 'state has changed')
-
-    return {
-        cartItems: state.shop.cart,
-        cartItemCount: state.shop.cart.reduce((count, curItem) => {
-            return count + curItem.quantity
-        }, 0),
-        totalPrice: state.shop.cart.reduce((count, curItem) => {
-            return count + curItem.price * curItem.quantity
-        }, 0),
-    }
-}
-
-export default connect(mapStateToProps, null)(ShoppingCart)
+export default ShoppingCart

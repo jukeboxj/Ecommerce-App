@@ -54,8 +54,6 @@ const shopReducer = (state = initialState, action) => {
                 item => item._id === action.payload._id
             )
 
-            console.log(updatedItemIndex)
-
             if (updatedItemIndex < 0) {
                 updatedCart.push({ ...action.payload, quantity: 1 })
             } else {

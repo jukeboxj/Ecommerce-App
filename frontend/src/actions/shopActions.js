@@ -5,16 +5,14 @@ export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART'
 export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
 
-export const addProductToCart = product => {
-    return dispatch => {
-        dispatch({
-            type: ADD_PRODUCT_TO_CART,
-            payload: product,
-        })
-        setTimeout(() => {
-            dispatch({ type: STOP_SHAKE_CART })
-        }, 500)
-    }
+export const addProductToCart = product => dispatch => {
+    dispatch({
+        type: ADD_PRODUCT_TO_CART,
+        payload: product,
+    })
+    setTimeout(() => {
+        dispatch({ type: STOP_SHAKE_CART })
+    }, 500)
 }
 
 export const removeProductToCart = productId => {

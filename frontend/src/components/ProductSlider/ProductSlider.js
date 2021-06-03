@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
 import './ProductSlider.scss'
 
-const ProductSlider = ({ images }) => {
+const ProductSlider = ({ product }) => {
+    console.log('we are in proudct slider and product is:', product)
     const imageRef = React.createRef()
-    const [img, setImg] = useState(images[0])
+    const [img, setImg] = useState(product.images[0])
     const [aItem, setAItem] = useState(0)
 
     const handleImageChange = e => {
@@ -12,7 +14,7 @@ const ProductSlider = ({ images }) => {
 
         console.dir(imageRef.current)
 
-        const part = imageRef.current.clientWidth / images.length
+        const part = imageRef.current.clientWidth / product.images.length
         console.log(Math.ceil(currentX / part) - 1)
 
         let imgIndex = Math.ceil(currentX / part) - 1
@@ -20,20 +22,20 @@ const ProductSlider = ({ images }) => {
             imgIndex = 0
         }
 
-        if (imgIndex >= images.length) {
-            imgIndex = images.length - 1
+        if (imgIndex >= product.images.length) {
+            imgIndex = product.images.length - 1
         }
         setAItem(imgIndex)
-        setImg(images[imgIndex])
+        setImg(product.images[imgIndex])
     }
 
     const handleMouseOut = e => {
-        setImg(images[0])
+        setImg(product.images[0])
         setAItem(0)
     }
 
     const changeImage = i => {
-        setImg(images[i])
+        setImg(product.images[i])
         setAItem(i)
     }
 
@@ -54,7 +56,7 @@ const ProductSlider = ({ images }) => {
                     </div>
                 </div>
                 <div className="img-small-wrap">
-                    {images.map((img, i) => (
+                    {product.images.map((img, i) => (
                         <div
                             className="item-gallery"
                             onClick={() => {
