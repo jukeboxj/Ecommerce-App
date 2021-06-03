@@ -8,8 +8,7 @@ const Header = () => {
     const shakeCart = useSelector(state => state.shop.shakeCart)
     const { loading, error, products } = useSelector(state => state.product)
 
-    // prettier-ignore
-    const wiggle = className('nav-item', { 'wiggle': shakeCart })
+    const wiggle = className('nav-item', { wiggle: shakeCart })
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-0">

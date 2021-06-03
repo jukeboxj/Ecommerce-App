@@ -1,73 +1,89 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
+import React from 'react'
 import './ProductSlider.scss'
+import classNames from 'classnames'
 
 const ProductSlider = ({ product }) => {
-    console.log('we are in proudct slider and product is:', product)
-    const imageRef = React.createRef()
-    const [img, setImg] = useState(product.images[0])
-    const [aItem, setAItem] = useState(0)
+    const { images } = product
+    const len = images.length
 
-    const handleImageChange = e => {
-        const currentX = e.clientX - cumulativeOffSet(imageRef.current).left
-
-        console.dir(imageRef.current)
-
-        const part = imageRef.current.clientWidth / product.images.length
-        console.log(Math.ceil(currentX / part) - 1)
-
-        let imgIndex = Math.ceil(currentX / part) - 1
-        if (imgIndex < 0) {
-            imgIndex = 0
+    const onNext = i => {
+        if (i < len - 1) {
+            return '#' + images[i + 1]
+        } else {
+            return '#' + images[0]
         }
-
-        if (imgIndex >= product.images.length) {
-            imgIndex = product.images.length - 1
-        }
-        setAItem(imgIndex)
-        setImg(product.images[imgIndex])
-    }
-
-    const handleMouseOut = e => {
-        setImg(product.images[0])
-        setAItem(0)
-    }
-
-    const changeImage = i => {
-        setImg(product.images[i])
-        setAItem(i)
     }
 
     return (
         <aside className="col-sm-5 border-right">
-            <article className="gallery-wrap">
-                <div className="img-big-wrap">
-                    <div style={{ padding: '2rem' }}>
-                        <a href="#">
-                            <img
-                                ref={imageRef}
-                                onMouseMove={handleImageChange}
-                                onMouseOut={handleMouseOut}
-                                src={img}
-                                style={{ width: '100%', height: '100%' }}
-                            />
-                        </a>
+            <div style={{ padding: '2rem' }}>
+                <div
+                    id="carousel"
+                    className="carousel carousel-dark slide"
+                    data-bs-ride="carousel"
+                >
+                    <div className="carousel-indicators">
+                        {images.map((img, i) => {
+                            return (
+                                <button
+                                    type="button"
+                                    data-bs-target="#carousel"
+                                    data-bs-slide-to={i}
+                                    className="active"
+                                    aria-current="true"
+                                    aria-label={`Slide ${i}`}
+                                    key={img}
+                                ></button>
+                            )
+                        })}
                     </div>
+                    <div className="carousel-inner">
+                        {images.map((img, i) => {
+                            const classname = classNames('carousel-item', {
+                                active: i === 0,
+                            })
+
+                            return (
+                                <div
+                                    className={classname}
+                                    data-bs-interval="2500"
+                                    key={img}
+                                >
+                                    <img
+                                        src={img}
+                                        className="d-block w-100"
+                                        alt={i}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <button
+                        className="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carousel"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            className="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        className="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carousel"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            className="carousel-control-next-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <div className="img-small-wrap">
-                    {product.images.map((img, i) => (
-                        <div
-                            className="item-gallery"
-                            onClick={() => {
-                                changeImage(i)
-                            }}
-                        >
-                            <img src={img} />
-                        </div>
-                    ))}
-                </div>
-            </article>
+            </div>
         </aside>
     )
 }
