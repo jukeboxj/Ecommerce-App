@@ -6,7 +6,12 @@ import Spinner from '../components/Spinner/Spinner'
 import { listProducts } from '../actions/productActions'
 
 const Home = () => {
+    const dispatch = useDispatch()
     const { loading, error } = useSelector(state => state.product)
+
+    useEffect(() => {
+        dispatch(listProducts())
+    }, [dispatch])
 
     return (
         <React.Fragment>

@@ -7,14 +7,8 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import ProductDetails from './pages/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart'
-import { listProducts } from './actions/productActions'
 
 const App = () => {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
 
     return (
         <>

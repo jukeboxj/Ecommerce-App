@@ -30,9 +30,9 @@ export const listProducts = () => async dispatch => {
 
 export const listProduct = _id => async (dispatch, getState) => {
     try {
-        let products = getState().product.products
+        let { products } = getState().product
 
-        if (products === undefined || products === []) {
+        if (products === undefined || products.length === 0) {
             await dispatch(listProducts())
             products = getState().product.products
         }
@@ -40,12 +40,14 @@ export const listProduct = _id => async (dispatch, getState) => {
         dispatch({ type: PRODUCT_REQUEST })
 
         const product = products.find(p => p._id === _id)
-        console.log('inside productActions, product is: ', product)
-
-        dispatch({
-            type: PRODUCT_SUCCESS,
-            payload: product,
-        })
+        if (product === undefined) {
+            throw new Error(_id + '- Not Found')
+        } else {
+            dispatch({
+                type: PRODUCT_SUCCESS,
+                payload: product,
+            })
+        }
     } catch (error) {
         dispatch({
             type: PRODUCT_FAIL,

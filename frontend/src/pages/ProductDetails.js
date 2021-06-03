@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductDetail from '../components/ProductDetail/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
-import { listProduct, listProducts } from '../actions/productActions'
+import { listProduct } from '../actions/productActions'
 import Spinner from '../components/Spinner/Spinner'
 
 const ProductDetails = ({ match }) => {
@@ -13,7 +13,7 @@ const ProductDetails = ({ match }) => {
 
     useEffect(() => {
         return dispatch(listProduct(_id))
-    }, [dispatch, _id, product])
+    }, [dispatch, _id,])
 
     return (
         <>
