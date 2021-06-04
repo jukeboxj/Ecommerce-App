@@ -64,7 +64,6 @@ const Product = props => {
         <div className="card h-100 product">
             <Link to={`/products/${_id}`} className="p-0">
                 <div
-                    id="productCarousel"
                     className="card-img-top carousel slide"
                     data-bs-ride="carousel"
                 >
@@ -73,7 +72,6 @@ const Product = props => {
                             len={images.length}
                             activeItem={aItem}
                             changeItem={changeImage}
-                            className="card-title"
                         />
                     </div>
                     <img
@@ -93,7 +91,7 @@ const Product = props => {
                     <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>
                 <h6 className="product__price">${formatMoney(price)}</h6>
-                <p className="card-text product__description mb-0">
+                <p className="card-text product__description mb-1">
                     {description} ...
                 </p>
                 <div className="card-footer bg-transparent border-top-0">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { shortenTitle } from '../../pipes/shortenTitle'
 import { formatMoney } from '../../pipes/priceFormatter'
 import './CartItem.scss'
@@ -49,10 +50,12 @@ const CartItem = ({
                         alt={description}
                     />
                 </div>
-                <div className="text-sm-center col-sm-12 text-md-start col-md-5">
-                    <h4 className="product-name">
-                        <strong>{shortenTitle(title)}</strong>
-                    </h4>
+                <div className="text-sm-center col-sm-12 text-md-start col-md-5 itemDetails">
+                    <Link to={`/products/${_id}`}>
+                        <h4 className="product-name">
+                            <p>{shortenTitle(title)}</p>
+                        </h4>
+                    </Link>
                     <h6>
                         <small className="product-description text-muted">
                             {description}
@@ -60,7 +63,7 @@ const CartItem = ({
                     </h6>
                 </div>
                 <div className="col-sm-12 text-sm-center col-md-5">
-                    <div className="row align-items-center d-flex justify-content-center justify-content-md-end">
+                    <div className="row d-flex align-items-center justify-content-center justify-content-md-end">
                         <div className="col-5 col-sm-5 col-md-5 d-flex justify-content-center align-items-center">
                             <p className="m-0">
                                 <strong>

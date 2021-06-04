@@ -1,89 +1,75 @@
-import React from 'react'
-import './ProductSlider.scss'
-import classNames from 'classnames'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import SlideDots from '../SlideDots/SlideDots'
+import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
 
-const ProductSlider = ({ product }) => {
-    const { images } = product
+const ProductSlider = () => {
+    const { images } = useSelector(state => state.product.product)
+    const [img, setImg] = useState(images[0])
+    const [aItem, setAItem] = useState(0)
+    const imageRef = React.createRef()
+
+    const handleImageChange = e => {
+        let clientX
+
+        if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX
+        } else {
+            clientX = e.clientX
+        }
+
+        const currentX = clientX - cumulativeOffSet(imageRef.current).left
+
+        // console.dir(imageRef.current);
+
+        const part = imageRef.current.clientWidth / images.length
+        // console.log(Math.ceil(currentX / part) - 1);
+
+        let imgIndex = Math.ceil(currentX / part) - 1
+        if (imgIndex < 0) {
+            imgIndex = 0
+        }
+
+        if (imgIndex >= images.length) {
+            imgIndex = images.length - 1
+        }
+        setAItem(imgIndex)
+        setImg(images[imgIndex])
+    }
+
+    const handleMouseOut = e => {
+        setImg(images[0])
+        setAItem(0)
+    }
+
+    const changeImage = i => {
+        setImg(images[i])
+        setAItem(i)
+    }
 
     return (
-        <aside className="col-sm-5 border-right">
-            <article className="gallery-wrap">
-                <div className="img-big-wrap">
-                    <div style={{ padding: '1rem' }}>
-                        <div
-                            id="carousel"
-                            className="img-small-wrap carousel carousel-dark slide"
-                            data-bs-ride="carousel"
-                        >
-                            <div className="carousel-indicators">
-                                {images.map((img, i) => {
-                                    return (
-                                        <button
-                                            type="button"
-                                            data-bs-target="#carousel"
-                                            data-bs-slide-to={i}
-                                            className="active"
-                                            aria-current="true"
-                                            aria-label={`Slide ${i}`}
-                                            key={img}
-                                        ></button>
-                                    )
-                                })}
-                            </div>
-                            <div className="carousel-inner">
-                                {images.map((img, i) => {
-                                    const classname = classNames(
-                                        'carousel-item',
-                                        {
-                                            active: i === 0,
-                                        }
-                                    )
-
-                                    return (
-                                        <div
-                                            className={classname}
-                                            data-bs-interval="2500"
-                                            key={img}
-                                        >
-                                            <img
-                                                src={img}
-                                                className="d-block w-100"
-                                                alt={i}
-                                            />
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            <button
-                                className="carousel-control-prev"
-                                type="button"
-                                data-bs-target="#carousel"
-                                data-bs-slide="prev"
-                            >
-                                <span
-                                    className="carousel-control-prev-icon"
-                                    aria-hidden="true"
-                                ></span>
-                                <span className="visually-hidden">
-                                    Previous
-                                </span>
-                            </button>
-                            <button
-                                className="carousel-control-next"
-                                type="button"
-                                data-bs-target="#carousel"
-                                data-bs-slide="next"
-                            >
-                                <span
-                                    className="carousel-control-next-icon"
-                                    aria-hidden="true"
-                                ></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
-                        </div>
+        <aside className="col-lg-4 slider border-right d-flex align-items-center">
+            <div style={{ padding: '0.5rem' }}>
+                <div className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-indicators d-flex align-items-end mb-0">
+                        <SlideDots
+                            len={images.length}
+                            activeItem={aItem}
+                            changeItem={changeImage}
+                        />
                     </div>
+                    <img
+                        onMouseMove={handleImageChange}
+                        onMouseOut={handleMouseOut}
+                        onTouchMove={handleImageChange}
+                        onTouchEnd={handleMouseOut}
+                        className="img-thumbnail border-0"
+                        src={img}
+                        alt={img}
+                        ref={imageRef}
+                    />
                 </div>
-            </article>
+            </div>
         </aside>
     )
 }

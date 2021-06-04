@@ -8,12 +8,12 @@ import Spinner from '../components/Spinner/Spinner'
 const ProductDetails = ({ match }) => {
     const dispatch = useDispatch()
 
-    const { loading, error, product } = useSelector(state => state.product)
+    const { loading, error } = useSelector(state => state.product)
     const _id = match.params._id
 
     useEffect(() => {
         return dispatch(listProduct(_id))
-    }, [dispatch, _id,])
+    }, [dispatch, _id])
 
     return (
         <>
@@ -24,9 +24,9 @@ const ProductDetails = ({ match }) => {
             ) : (
                 <div className="container" style={{ padding: '6rem 0' }}>
                     <div className="card">
-                        <div className="row">
-                            <ProductSlider product={product} />
-                            <ProductDetail product={product} />
+                        <div className="row g-0">
+                            <ProductSlider />
+                            <ProductDetail />
                         </div>
                     </div>
                 </div>
