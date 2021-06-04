@@ -62,37 +62,48 @@ const Product = props => {
 
     return (
         <div className="card h-100 product">
-            <Link to={`/products/${_id}`} className="product__link">
-                <img
-                    onMouseMove={handleImageChange}
-                    onMouseOut={handleMouseOut}
-                    onTouchMove={handleImageChange}
-                    onTouchEnd={handleMouseOut}
-                    className="card-img-top product__img"
-                    src={img}
-                    alt={title}
-                    ref={imageRef}
-                />
-                <SlideDots
-                    len={images.length}
-                    activeItem={aItem}
-                    changeItem={changeImage}
-                />
+            <Link to={`/products/${_id}`} className="p-0">
+                <div
+                    id="productCarousel"
+                    className="card-img-top carousel slide"
+                    data-bs-ride="carousel"
+                >
+                    <div className="carousel-indicators">
+                        <SlideDots
+                            len={images.length}
+                            activeItem={aItem}
+                            changeItem={changeImage}
+                            className="card-title"
+                        />
+                    </div>
+                    <img
+                        onMouseMove={handleImageChange}
+                        onMouseOut={handleMouseOut}
+                        onTouchMove={handleImageChange}
+                        onTouchEnd={handleMouseOut}
+                        className="img-thumbnail border-0"
+                        src={img}
+                        alt={title}
+                        ref={imageRef}
+                    />
+                </div>
             </Link>
-            <div className="card-body product__text">
+            <div className="card-body product__text pb-0">
                 <h4 classNames="card-title product__title">
                     <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>
                 <h6 className="product__price">${formatMoney(price)}</h6>
-                <p className="card-text product__description">
+                <p className="card-text product__description mb-0">
                     {description} ...
                 </p>
-                <button
-                    onClick={handleAddToCart}
-                    className="btn btn-outline-primary product__add-to-cart"
-                >
-                    Add to cart
-                </button>
+                <div className="card-footer bg-transparent border-top-0">
+                    <button
+                        onClick={handleAddToCart}
+                        className="btn btn-outline-primary product__add-to-cart"
+                    >
+                        Add to cart
+                    </button>
+                </div>
             </div>
         </div>
     )

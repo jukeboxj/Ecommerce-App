@@ -4,7 +4,6 @@ import { shortenTitle } from '../../pipes/shortenTitle'
 import { formatMoney } from '../../pipes/priceFormatter'
 import './CartItem.scss'
 import {
-    addProductToCart,
     decrementCartQuantity,
     incrementCartQuantity,
     removeProductToCart,

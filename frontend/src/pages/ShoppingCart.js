@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { formatMoney } from '../pipes/priceFormatter'
 import CartItem from '../components/CartItem/CartItem'
 

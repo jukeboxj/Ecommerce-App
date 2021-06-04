@@ -46,17 +46,17 @@
     bottom: .8rem;
     width: 60%;
     left: 50%;
-    opacity: 0;
+    opacity: 1;
     visibility: hidden;
     transform: translateX(-50%);
     transition: all .2s;
     padding: 3px 12px;
-
   }
 
   &:hover &__add-to-cart {
     visibility: visible;
     opacity: 1;
+    // background-color: #f8f9fa;
   }
 
   &:hover .owl-dots {
@@ -64,8 +64,6 @@
   }
 
 }
-
-
 
 @media only screen and (max-width: 768px) {
   .product {

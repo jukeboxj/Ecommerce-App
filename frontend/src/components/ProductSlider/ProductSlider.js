@@ -4,15 +4,6 @@ import classNames from 'classnames'
 
 const ProductSlider = ({ product }) => {
     const { images } = product
-    const len = images.length
-
-    const onNext = i => {
-        if (i < len - 1) {
-            return '#' + images[i + 1]
-        } else {
-            return '#' + images[0]
-        }
-    }
 
     return (
         <aside className="col-sm-5 border-right">

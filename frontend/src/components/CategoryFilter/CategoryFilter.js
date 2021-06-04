@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './CategoryFilter.scss'
 import { categories } from '../../data/categories'
@@ -7,7 +7,6 @@ import {
     removeCategoryFromFilter,
     removeAllCategoryFromFilter,
 } from '../../actions'
-import { v4 as uuidv4 } from 'uuid'
 
 const CategoryFilter = props => {
     let removeSelected
@@ -55,8 +54,8 @@ const CategoryFilter = props => {
                 {removeSelected}
             </div>
             <ul className="list-group list-group-flush">
-                {categories.map(category => (
-                    <li className="list-group-item flex-50" key={uuidv4()}>
+                {categories.map((category, i) => (
+                    <li className="list-group-item flex-50" key={i}>
                         <label className="custom-checkbox text-capitalize fs-6">
                             {' '}
                             {category} ({categoryItemsCount[category]})

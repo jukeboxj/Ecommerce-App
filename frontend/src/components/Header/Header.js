@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import className from 'classnames'
 import './Header.scss'
 
 const Header = () => {
     const shakeCart = useSelector(state => state.shop.shakeCart)
-    const { loading, error, products } = useSelector(state => state.product)
+    // const { loading, error, products } = useSelector(state => state.product)
 
     const wiggle = className('nav-item', { wiggle: shakeCart })
 
