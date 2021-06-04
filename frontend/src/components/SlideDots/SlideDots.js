@@ -20,7 +20,8 @@ const SlideDots = (
         dots.push(<button
             onClick={() => {changeItem(i)}}
             role="presentation"
-            className={dotClass}><span></span></button>)
+            className={dotClass}
+            key={i}><span></span></button>)
     }
 
     return (

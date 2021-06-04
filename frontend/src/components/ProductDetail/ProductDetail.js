@@ -39,7 +39,7 @@ const ProductDetail = () => {
                     onClick={handleAddToCart}
                     className="btn btn-lg btn-outline-primary text-uppercase"
                 >
-                    <i class="bi bi-cart-plus-fill me-2" />
+                    <i className="bi bi-cart-plus-fill me-2" />
                     Add to cart
                 </button>
             </article>

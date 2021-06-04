@@ -87,7 +87,7 @@ const Product = props => {
                 </div>
             </Link>
             <div className="card-body product__text pb-0">
-                <h4 classNames="card-title product__title">
+                <h4 className="card-title product__title">
                     <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>
                 <h6 className="product__price">${formatMoney(price)}</h6>
