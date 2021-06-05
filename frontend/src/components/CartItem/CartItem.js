@@ -83,6 +83,7 @@ const CartItem = ({
                                     className="plus"
                                 />
                                 <input
+                                    readOnly
                                     type="number"
                                     step="1"
                                     max="10"

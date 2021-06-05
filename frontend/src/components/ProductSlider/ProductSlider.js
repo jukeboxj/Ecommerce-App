@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import SlideDots from '../SlideDots/SlideDots'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
 
-const ProductSlider = () => {
+const ProductSlider = ({ match }) => {
     const { images } = useSelector(state => state.product.product)
     const [img, setImg] = useState(images[0])
     const [aItem, setAItem] = useState(0)
@@ -47,6 +47,8 @@ const ProductSlider = () => {
         setAItem(i)
     }
 
+    console.log('product slider rendered')
+
     return (
         <aside className="col-lg-4 slider border-right d-flex align-items-center">
             <div style={{ padding: '0.5rem' }}>
@@ -65,6 +67,7 @@ const ProductSlider = () => {
                         onTouchEnd={handleMouseOut}
                         className="img-thumbnail border-0"
                         src={img}
+                        key={img}
                         alt={img}
                         ref={imageRef}
                     />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductDetail from '../components/ProductDetail/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
@@ -11,9 +11,11 @@ const ProductDetails = ({ match }) => {
     const { loading, error } = useSelector(state => state.product)
     const _id = match.params._id
 
-    useEffect(() => {
-        return dispatch(listProduct(_id))
+    useLayoutEffect(() => {
+        dispatch(listProduct(_id))
     }, [dispatch, _id])
+
+    console.log('product detailS rendered')
 
     return (
         <>
@@ -25,7 +27,7 @@ const ProductDetails = ({ match }) => {
                 <div className="container" style={{ padding: '6rem 0' }}>
                     <div className="card">
                         <div className="row g-0">
-                            <ProductSlider />
+                            <ProductSlider _id={_id} />
                             <ProductDetail />
                         </div>
                     </div>

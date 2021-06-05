@@ -81,6 +81,7 @@ const Product = props => {
                         onTouchEnd={handleMouseOut}
                         className="img-thumbnail border-0"
                         src={img}
+                        key={img}
                         alt={title}
                         ref={imageRef}
                     />

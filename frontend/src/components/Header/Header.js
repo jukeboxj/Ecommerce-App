@@ -11,7 +11,7 @@ const Header = () => {
     const wiggle = className('nav-item', { wiggle: shakeCart })
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-0">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1">
             <div className="container">
                 <NavLink className="navbar-brand" to={'/products'}>
                     Kirkfall

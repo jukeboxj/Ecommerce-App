@@ -27,10 +27,10 @@ const ShoppingCart = props => {
                     <ul className="list-group list-group-flush">
                         {cartItemCount ? (
                             cart.map(cart => (
-                                <CartItem {...cart} img={cart.images[0]} />
+                                <CartItem {...cart} img={cart.images[0]} key={cart._id} />
                             ))
                         ) : (
-                            <li className="list-group-item text-center m-5">
+                            <li className="list-group-item text-center m-5" key='noItem'>
                                 There is no product in your cart
                             </li>
                         )}
