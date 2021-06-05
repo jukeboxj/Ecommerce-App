@@ -27,7 +27,7 @@ const ProductDetails = ({ match }) => {
                 <div className="container" style={{ padding: '6rem 0' }}>
                     <div className="card">
                         <div className="row g-0">
-                            <ProductSlider _id={_id} />
+                            <ProductSlider />
                             <ProductDetail />
                         </div>
                     </div>

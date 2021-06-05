@@ -15,19 +15,41 @@ db.once('open', () => {
 })
 
 const seedDB = async () => {
-    await Products.deleteMany({})
-    for (const s of seeds) {
-        const i = new Products({
-            title: s.title,
-            images: s.images,
-            category: s.category,
-            price: s.price,
-            description: s.description,
-        })
-        await i.save()
+    try {
+        await Products.deleteMany({})
+        for (const s of seeds) {
+            const i = new Products({
+                title: s.title,
+                images: s.images,
+                category: s.category,
+                price: s.price,
+                description: s.description,
+            })
+            await i.save()
+        }
+    } catch (error) {
+        console.error(`${error}`.red.inverse)
+        process.exit(1)
     }
 }
 
-seedDB().then(() => {
-    mongoose.connection.close()
-})
+const destoy = async () => {
+    try {
+        await Products.deleteMany({})
+    } catch (error) {
+        console.error(`${error}`.red.inverse)
+        process.exit(1)
+    }
+}
+
+if (process.argv[2] === '-d') {
+    destoy().then(() => {
+        mongoose.connection.close()
+    })
+    console.log('Data Destroyed!')
+} else {
+    seedDB().then(() => {
+        mongoose.connection.close()
+        console.log('Data Imported!')
+    })
+}
