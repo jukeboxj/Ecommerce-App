@@ -10,4 +10,4 @@ const productSchema = new Schema({
     description: String,
 })
 
-export default mongoose.model('Products', productSchema)
+export default mongoose.model('Product', productSchema)

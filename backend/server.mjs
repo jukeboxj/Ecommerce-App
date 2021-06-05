@@ -1,21 +1,15 @@
+import 'colors'
 import express from 'express'
+import dotenv from 'dotenv'
 import path from 'path'
 import methodOverride from 'method-override'
-import mongoose from 'mongoose'
+import connectDB from './config/db.mjs'
 
 import productRoutes from './routes/productRoutes.mjs'
 
-mongoose.connect('mongodb://localhost:27017/kirkfall', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-})
+dotenv.config()
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => {
-    console.log('Database connected')
-})
+connectDB()
 
 const app = express()
 const __dirname = path.resolve()

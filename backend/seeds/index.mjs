@@ -1,24 +1,19 @@
-import mongoose from 'mongoose'
+import 'colors'
+import dotenv from 'dotenv'
 import { seeds } from './seeds.mjs'
-import Products from '../models/productModel.mjs'
+import Product from '../models/productModel.mjs'
+import connectDB from '../config/db.mjs'
 
-mongoose.connect('mongodb://localhost:27017/kirkfall', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-})
+dotenv.config()
+console.log(process.env.MONGO_URI)
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => {
-    console.log('Database connected')
-})
+connectDB()
 
 const seedDB = async () => {
     try {
-        await Products.deleteMany({})
+        await Product.deleteMany({})
         for (const s of seeds) {
-            const i = new Products({
+            const i = new Product({
                 title: s.title,
                 images: s.images,
                 category: s.category,
@@ -27,6 +22,9 @@ const seedDB = async () => {
             })
             await i.save()
         }
+
+        console.log('Data Imported!'.green.inverse)
+        process.exit()
     } catch (error) {
         console.error(`${error}`.red.inverse)
         process.exit(1)
@@ -35,7 +33,10 @@ const seedDB = async () => {
 
 const destoy = async () => {
     try {
-        await Products.deleteMany({})
+        await Product.deleteMany({})
+
+        console.log('Data Destroyed!'.green.inverse)
+        process.exit()
     } catch (error) {
         console.error(`${error}`.red.inverse)
         process.exit(1)
@@ -43,13 +44,7 @@ const destoy = async () => {
 }
 
 if (process.argv[2] === '-d') {
-    destoy().then(() => {
-        mongoose.connection.close()
-    })
-    console.log('Data Destroyed!')
+    destoy()
 } else {
-    seedDB().then(() => {
-        mongoose.connection.close()
-        console.log('Data Imported!')
-    })
+    seedDB()
 }
