@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductDetail from '../components/ProductDetail/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
@@ -8,14 +8,14 @@ import Spinner from '../components/Spinner/Spinner'
 const ProductDetails = ({ match }) => {
     const dispatch = useDispatch()
 
-    const { loading, error } = useSelector(state => state.product)
+    const { loading, error } = useSelector(state => state.productDetails)
     const _id = match.params._id
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         dispatch(listProduct(_id))
     }, [dispatch, _id])
 
-    console.log('product detailS rendered')
+    console.log('product detailS rendered', loading, error)
 
     return (
         <>

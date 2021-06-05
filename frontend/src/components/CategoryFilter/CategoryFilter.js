@@ -77,7 +77,7 @@ const CategoryFilter = props => {
 const mapStateToProps = state => {
     const categoryItemsCount = {}
 
-    state.product.products.forEach(p => {
+    state.productList.products.forEach(p => {
         categoryItemsCount[p.category] = categoryItemsCount[p.category] + 1 || 1
     })
 

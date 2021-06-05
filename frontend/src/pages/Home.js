@@ -7,7 +7,7 @@ import { listProducts } from '../actions/productActions'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const { loading, error, products } = useSelector(state => state.product)
+    const { loading, error, products } = useSelector(state => state.productList)
 
     useEffect(() => {
         if (products.length === 0 || products === undefined)

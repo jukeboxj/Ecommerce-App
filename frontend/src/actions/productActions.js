@@ -29,16 +29,16 @@ export const listProducts = () => async dispatch => {
 
 export const listProduct = _id => async (dispatch, getState) => {
     try {
-        let { products } = getState().product
-
-        if (products === undefined || products.length === 0) {
-            await dispatch(listProducts())
-            products = getState().product.products
-        }
-
         dispatch({ type: PRODUCT_REQUEST })
 
-        const product = products.find(p => p._id === _id)
+        let { products } = getState().productList
+        if (products === undefined || products.length === 0) {
+            dispatch(listProducts())
+            products = getState().productList.products
+        }
+
+        const product = await products.find(p => p._id === _id)
+
         if (product === undefined) {
             throw new Error(_id + '- Not Found')
         } else {

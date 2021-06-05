@@ -2,11 +2,10 @@ import React, { useEffect } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { addProductToCart } from '../../actions/shopActions'
-import { listProduct } from '../../actions/productActions'
 
 const ProductDetail = ({ _id }) => {
     const dispatch = useDispatch()
-    const { product } = useSelector(state => state.product)
+    const { product } = useSelector(state => state.productDetails)
     const { title, price, description, category } = product
 
     const handleAddToCart = () => {

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import SlideDots from '../SlideDots/SlideDots'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
 
-const ProductSlider = ({ match }) => {
-    const { images } = useSelector(state => state.product.product)
+const ProductSlider = () => {
+    const { images } = useSelector(state => state.productDetails.product)
     const [img, setImg] = useState(images[0])
     const [aItem, setAItem] = useState(0)
     const imageRef = React.createRef()
@@ -37,17 +37,14 @@ const ProductSlider = ({ match }) => {
         setImg(images[imgIndex])
     }
 
-    const handleMouseOut = e => {
-        setImg(images[0])
-        setAItem(0)
-    }
-
     const changeImage = i => {
         setImg(images[i])
         setAItem(i)
     }
 
-    console.log('product slider rendered')
+    console.log('slider is rendered')
+    console.log('images is ', images)
+    console.log('img is ', img)
 
     return (
         <aside className="col-lg-4 slider border-right d-flex align-items-center">
@@ -61,15 +58,13 @@ const ProductSlider = ({ match }) => {
                         />
                     </div>
                     <img
-                        onMouseMove={handleImageChange}
-                        onMouseOut={handleMouseOut}
-                        onTouchMove={handleImageChange}
-                        onTouchEnd={handleMouseOut}
                         className="img-thumbnail border-0"
                         src={img}
                         key={img}
                         alt={img}
                         ref={imageRef}
+                        onMouseMove={handleImageChange}
+                        onTouchMove={handleImageChange}
                     />
                 </div>
             </div>

@@ -28,7 +28,7 @@ const mapStateToProps = state => {
     const orderBy = state.orderBy
 
     const filterByCategoryArr = categoryFilter(
-        state.product.products,
+        state.productList.products,
         categorys
     )
     const filterByOrderArr = orderByFilter(filterByCategoryArr, orderBy)
