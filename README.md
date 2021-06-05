@@ -23,7 +23,7 @@ Local mongodb server would be required - https://www.mongodb.com/try/download/co
 
 ```
 # Import data
-npm run data:import
+npm run data
 
 # Destroy data
 npm run data:destroy
