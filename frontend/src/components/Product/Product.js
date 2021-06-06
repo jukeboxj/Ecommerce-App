@@ -46,10 +46,10 @@ const Product = props => {
         setImg(images[imgIndex])
     }
 
-    const handleMouseOut = e => {
-        setImg(images[0])
-        setAItem(0)
-    }
+    // const handleMouseOut = e => {
+    //     setImg(images[0])
+    //     setAItem(0)
+    // }
 
     const changeImage = i => {
         setImg(images[i])
@@ -76,9 +76,9 @@ const Product = props => {
                     </div>
                     <img
                         onMouseMove={handleImageChange}
-                        onMouseOut={handleMouseOut}
+                        // onMouseOut={handleMouseOut}
                         onTouchMove={handleImageChange}
-                        onTouchEnd={handleMouseOut}
+                        // onTouchEnd={handleMouseOut}
                         className="img-thumbnail border-0"
                         src={img}
                         key={img}

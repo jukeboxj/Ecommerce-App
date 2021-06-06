@@ -2,8 +2,8 @@ export const seeds = [
     {
         title: 'Green Bali',
         images: [
-            'https://www.tmc.edu/news/wp-content/uploads/sites/2/2019/08/20190613_kratom_203.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1589536677029-c0aa1808fba6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+            'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'green vein',
         price: 10,
@@ -13,8 +13,8 @@ export const seeds = [
     {
         title: 'Green Maeng Da',
         images: [
-            'https://www.tmc.edu/news/wp-content/uploads/sites/2/2019/08/20190613_kratom_203.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1615485500834-bc10199bc727?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
+            'https://images.unsplash.com/photo-1615485290628-c5033c657a8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'green vein',
         price: 20,
@@ -24,8 +24,9 @@ export const seeds = [
     {
         title: 'Red Bali',
         images: [
-            'https://www.tmc.edu/news/wp-content/uploads/sites/2/2019/08/20190613_kratom_203.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1573145757298-85c8a093545d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
+            'https://images.unsplash.com/photo-1594134888586-2d27f0e4bcaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+            'https://images.unsplash.com/photo-1510897345173-4d938815feb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'red vein',
         price: 30,
@@ -35,8 +36,8 @@ export const seeds = [
     {
         title: 'Red Maeng Da',
         images: [
-            'https://edenspace.com/wp-content/uploads/2018/12/red-dragon-kratom-powder.png',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1572895610730-8ca3deb75b68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1079&q=80',
+            'https://images.unsplash.com/photo-1589626821071-c803ffde2071?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
         ],
         category: 'red vein',
         price: 40,
@@ -46,8 +47,7 @@ export const seeds = [
     {
         title: 'White Bali',
         images: [
-            'https://www.silesiaph.cz/672-thickbox/white-borneo-kratom.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1571995619122-3fa5496ce09f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'white vein',
         price: 50,
@@ -57,8 +57,8 @@ export const seeds = [
     {
         title: 'Yellow Maeng Da',
         images: [
-            'https://edenspace.com/wp-content/uploads/2018/12/yellow-powder-on-table.png',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1605926637563-ab877395ec88?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+            'https://images.unsplash.com/photo-1560579183-1780ab036d65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'yellow vein',
         price: 60,
@@ -69,7 +69,7 @@ export const seeds = [
         title: 'Split Pack',
         images: [
             'https://otiesbotanicals.com/wp-content/uploads/2019/05/kilosplit.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mitragyna_speciosa111.JPG/1200px-Mitragyna_speciosa111.JPG',
+            'https://images.unsplash.com/photo-1581268497089-7a975fb491a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'split pack',
         price: 150,
