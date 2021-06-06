@@ -46,10 +46,10 @@ const Product = props => {
         setImg(images[imgIndex])
     }
 
-    // const handleMouseOut = e => {
-    //     setImg(images[0])
-    //     setAItem(0)
-    // }
+    const handleMouseOut = e => {
+        setImg(images[0])
+        setAItem(0)
+    }
 
     const changeImage = i => {
         setImg(images[i])
@@ -76,7 +76,7 @@ const Product = props => {
                     </div>
                     <img
                         onMouseMove={handleImageChange}
-                        // onMouseOut={handleMouseOut}
+                        onMouseOut={handleMouseOut}
                         onTouchMove={handleImageChange}
                         // onTouchEnd={handleMouseOut}
                         className="img-thumbnail border-0"
@@ -87,7 +87,7 @@ const Product = props => {
                     />
                 </div>
             </Link>
-            <div className="card-body product__text pb-0">
+            <div className="card-body product__text pb-1">
                 <h4 className="card-title product__title">
                     <Link to={`/products/${_id}`}>{title}</Link>
                 </h4>

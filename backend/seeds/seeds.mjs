@@ -6,7 +6,7 @@ export const seeds = [
             'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'green vein',
-        price: 10,
+        price: 69,
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
     },
@@ -17,7 +17,7 @@ export const seeds = [
             'https://images.unsplash.com/photo-1615485290628-c5033c657a8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'green vein',
-        price: 20,
+        price: 77,
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
     },
@@ -29,7 +29,7 @@ export const seeds = [
             'https://images.unsplash.com/photo-1510897345173-4d938815feb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'red vein',
-        price: 30,
+        price: 32,
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
     },
@@ -40,7 +40,7 @@ export const seeds = [
             'https://images.unsplash.com/photo-1589626821071-c803ffde2071?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
         ],
         category: 'red vein',
-        price: 40,
+        price: 420,
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
     },
@@ -50,7 +50,7 @@ export const seeds = [
             'https://images.unsplash.com/photo-1571995619122-3fa5496ce09f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
         ],
         category: 'white vein',
-        price: 50,
+        price: 88,
         description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
     },

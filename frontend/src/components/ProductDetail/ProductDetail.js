@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { addProductToCart } from '../../actions/shopActions'
