@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     clearOrderBy,
-    ORDER_BY_ASC,
-    ORDER_BY_DESC,
     orderByAsc,
     orderByDesc,
 } from '../../actions'
@@ -69,34 +67,6 @@ const OrderFilter = () => {
                 {removeSelected}
             </div>
             <ul className="list-group list-group-flush">
-                {/* <li className="list-group-item flex-fill">
-                    <label className="custom-radio-btn fs-6">
-                        {' '}
-                        Low to high
-                        <input
-                            value={ORDER_BY_ASC}
-                            type="radio"
-                            onChange={handleRadioChange}
-                            name="orderByPrice"
-                            className="custom-radio-btn__input"
-                        />
-                        <span className="custom-radio-btn__span"></span>
-                    </label>
-                </li>
-                <li className="list-group-item flex-fill fs-6">
-                    <label className="custom-radio-btn">
-                        {' '}
-                        High to low
-                        <input
-                            value={ORDER_BY_DESC}
-                            onChange={handleRadioChange}
-                            type="radio"
-                            name="orderByPrice"
-                            className="custom-radio-btn__input"
-                        />
-                        <span className="custom-radio-btn__span"></span>
-                    </label>
-                </li> */}
                 <button
                     className="list-group-item list-group-item-action list-group-item-light text-capitalize"
                     name="orderByPrice"
