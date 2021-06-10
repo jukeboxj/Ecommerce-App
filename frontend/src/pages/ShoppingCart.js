@@ -1,15 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { formatMoney } from '../pipes/priceFormatter'
 import CartItem from '../components/CartItem/CartItem'
+import Checkout from '../components/Checkout/Checkout'
 
-const ShoppingCart = props => {
+const ShoppingCart = () => {
     const cart = useSelector(state => state.shop.cart)
+
     const cartItemCount = cart.reduce((count, curItem) => {
         return count + curItem.quantity
-    }, 0)
-    const totalPrice = cart.reduce((count, curItem) => {
-        return count + curItem.price * curItem.quantity
     }, 0)
 
     return (
@@ -27,19 +25,27 @@ const ShoppingCart = props => {
                     <ul className="list-group list-group-flush">
                         {cartItemCount ? (
                             cart.map(cart => (
-                                <CartItem {...cart} img={cart.images[0]} key={cart._id} />
+                                <CartItem
+                                    {...cart}
+                                    img={cart.images[0]}
+                                    key={cart._id}
+                                />
                             ))
                         ) : (
-                            <li className="list-group-item text-center m-5" key='noItem'>
+                            <li
+                                className="list-group-item text-center m-5"
+                                key="noItem"
+                            >
                                 There is no product in your cart
                             </li>
                         )}
                     </ul>
                     <div className="card-footer">
-                        <div className="text-end" style={{ margin: '10px' }}>
-                            <div style={{ margin: '5px' }}>
-                                Total price: <b>${formatMoney(totalPrice)}</b>
-                            </div>
+                        <div
+                            className="d-flex justify-content-center justify-content-md-end"
+                            style={{ margin: '10px' }}
+                        >
+                            {cartItemCount ? <Checkout /> : ''}
                         </div>
                     </div>
                 </div>
