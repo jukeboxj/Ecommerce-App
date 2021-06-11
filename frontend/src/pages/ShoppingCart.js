@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import CartItem from '../components/CartItem/CartItem'
-import Checkout from '../components/Checkout/Checkout'
+import Checkout from '../components/Checkout'
 
 const ShoppingCart = () => {
     const cart = useSelector(state => state.shop.cart)

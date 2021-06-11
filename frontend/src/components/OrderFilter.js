@@ -4,7 +4,7 @@ import {
     clearOrderBy,
     orderByAsc,
     orderByDesc,
-} from '../../actions'
+} from '../actions'
 
 const OrderFilter = () => {
     const dispatch = useDispatch()

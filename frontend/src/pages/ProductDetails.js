@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import ProductDetail from '../components/ProductDetail/ProductDetail'
+import ProductDetail from '../components/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
 import { listProduct } from '../actions/productActions'
 import Spinner from '../components/Spinner/Spinner'

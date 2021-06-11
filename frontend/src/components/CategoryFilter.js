@@ -1,11 +1,11 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { categories } from '../../data/categories'
+import { categories } from '../data/categories'
 import {
     addCategoryToFilter,
     removeCategoryFromFilter,
     removeAllCategoryFromFilter,
-} from '../../actions'
+} from '../actions'
 
 const CategoryFilter = () => {
     const dispatch = useDispatch()

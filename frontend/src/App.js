@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer'
 import ProductDetails from './pages/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart'
 

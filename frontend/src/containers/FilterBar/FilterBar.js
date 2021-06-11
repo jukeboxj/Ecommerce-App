@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
-import OrderFilter from "../../components/OrderFilter/OrderFilter";
+import CategoryFilter from "../../components/CategoryFilter";
+import OrderFilter from "../../components/OrderFilter";
 
 class FilterBar extends Component {
     render() {

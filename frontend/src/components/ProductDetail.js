@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { formatMoney } from '../../pipes/priceFormatter'
-import { addProductToCart } from '../../actions/shopActions'
+import { formatMoney } from '../pipes/priceFormatter'
+import { addProductToCart } from '../actions/shopActions'
 
-const ProductDetail = ({ _id }) => {
+const ProductDetail = () => {
     const dispatch = useDispatch()
     const { product } = useSelector(state => state.productDetails)
     const { title, price, description, category } = product
