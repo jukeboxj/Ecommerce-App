@@ -43,8 +43,6 @@ const ProductSlider = () => {
     }
 
     console.log('slider is rendered')
-    console.log('images is ', images)
-    console.log('img is ', img)
 
     return (
         <aside className="col-lg-4 slider border-right d-flex align-items-center">

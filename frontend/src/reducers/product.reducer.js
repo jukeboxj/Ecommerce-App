@@ -10,11 +10,10 @@ import {
 export const productListReducer = (state = { products: [] }, action) => {
     switch (action.type) {
         case PRODUCT_LIST_REQUEST:
-            return { ...state, loading: true, products: [] }
+            return { loading: true, products: [] }
 
         case PRODUCT_LIST_SUCCESS:
             return {
-                ...state,
                 loading: false,
                 products: action.payload.products,
             }
@@ -36,10 +35,10 @@ export const productDetailsReducer = (
 ) => {
     switch (action.type) {
         case PRODUCT_REQUEST:
-            return { ...state, loading: true, product: { images: [] } }
+            return { loading: true, product: { images: [] } }
 
         case PRODUCT_SUCCESS:
-            return { ...state, loading: false, product: action.payload }
+            return { loading: false, product: action.payload }
 
         case PRODUCT_FAIL:
             return {

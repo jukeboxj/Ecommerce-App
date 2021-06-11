@@ -4,6 +4,7 @@ export const STOP_SHAKE_CART = 'STOP_SHAKE_CART'
 export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART'
 export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
+export const CLEAR_CART = 'CLEAR_CART'
 
 export const addProductToCart = product => dispatch => {
     dispatch({
@@ -35,4 +36,4 @@ export const decrementCartQuantity = productId => {
         payload: productId,
     }
 }
-//#endregion
+

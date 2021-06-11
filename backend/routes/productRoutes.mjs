@@ -3,7 +3,7 @@ import Product from '../models/productModel.mjs'
 
 import {
     getProducts,
-    getProductById,
+    // getProductById,
 } from '../controllers/productController.mjs'
 // import {
 //     getProducts,
@@ -24,7 +24,7 @@ router.route('/').get(getProducts)
 
 // router.get('/top', getTopProducts)
 
-router.route('/:_id').get(getProductById)
+// router.route('/:_id').get(getProductById)
 //     .delete(protect, admin, deleteProduct)
 //     .put(protect, admin, updateProduct)
 

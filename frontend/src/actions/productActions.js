@@ -33,7 +33,7 @@ export const listProduct = _id => async (dispatch, getState) => {
 
         let { products } = getState().productList
         if (products === undefined || products.length === 0) {
-            dispatch(listProducts())
+            await dispatch(listProducts())
             products = getState().productList.products
         }
 

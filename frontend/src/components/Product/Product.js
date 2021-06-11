@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { formatMoney } from '../../pipes/priceFormatter'
 import { cumulativeOffSet } from '../../utilities/cumulativeOffset'
 // import classNames from 'classnames'
-
 import './Product.scss'
 import SlideDots from '../SlideDots/SlideDots'
 import { addProductToCart } from '../../actions/shopActions'
