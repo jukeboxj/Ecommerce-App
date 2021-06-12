@@ -12,8 +12,6 @@ const ProductDetail = () => {
         dispatch(addProductToCart(product))
     }
 
-    console.log('product detail rendered')
-
     return (
         <aside className="col-lg-8">
             <article className="card-body p-5">

@@ -5,7 +5,6 @@ import Product from '../models/productModel.mjs'
 import connectDB from '../config/db.mjs'
 
 dotenv.config()
-console.log(process.env.MONGO_URI)
 
 connectDB()
 

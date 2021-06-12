@@ -15,9 +15,6 @@ const OrderFilter = () => {
         const desClass = document.getElementById('des').classList
         const id = e.currentTarget.id
 
-        console.log('id is', id)
-        console.log('filter is', filter)
-
         if (
             (id === 'asc' && filter === 'des') ||
             (id === 'asc' && filter === '')
@@ -41,7 +38,6 @@ const OrderFilter = () => {
         const btns = document.getElementsByName('orderByPrice')
         btns.forEach(btn => {
             btn.classList.remove('active')
-            console.log(btn)
         })
 
         dispatch(clearOrderBy())

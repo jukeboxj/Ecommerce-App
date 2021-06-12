@@ -42,8 +42,6 @@ const ProductSlider = () => {
         setAItem(i)
     }
 
-    console.log('slider is rendered')
-
     return (
         <aside className="col-lg-4 slider border-right d-flex align-items-center">
             <div style={{ padding: '0.5rem' }}>

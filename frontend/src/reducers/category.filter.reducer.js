@@ -11,12 +11,10 @@ export const categoryFilterReducer = (state = '', action) => {
             return (state += action.category)
 
         case REMOVE_CATEGORY_FROM_FILTER:
-            console.log('remove category', action)
             const reg = new RegExp(action.category, 'gi')
             return state.replace(reg, '')
 
         case REMOVE_ALL_CATEGORY_FROM_FILTER:
-            console.log('remove all category', action)
             return (state = '')
 
         default:

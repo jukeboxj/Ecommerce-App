@@ -16,8 +16,6 @@ const ProductDetails = ({ match }) => {
         dispatch(listProduct(_id))
     }, [dispatch, _id])
 
-    console.log('product detailS rendered', loading, error)
-
     return (
         <>
             {loading ? (
