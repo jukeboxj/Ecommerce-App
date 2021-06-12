@@ -6,7 +6,7 @@ export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
 export const CLEAR_CART = 'CLEAR_CART'
 
-export const addProductToCart = product => dispatch => {
+export const addProductToCart = product => (dispatch, getState) => {
     dispatch({
         type: ADD_PRODUCT_TO_CART,
         payload: product,
@@ -14,26 +14,29 @@ export const addProductToCart = product => dispatch => {
     setTimeout(() => {
         dispatch({ type: STOP_SHAKE_CART })
     }, 500)
+    localStorage.setItem('cart', JSON.stringify(getState().shop.cart))
 }
 
-export const removeProductToCart = productId => {
-    return {
+export const removeProductToCart = productId => (dispatch, getState) => {
+    dispatch({
         type: REMOVE_PRODUCT_FROM_CART,
         payload: productId,
-    }
+    })
+    localStorage.setItem('cart', JSON.stringify(getState().shop.cart))
 }
 
-export const incrementCartQuantity = productId => {
-    return {
+export const incrementCartQuantity = productId => (dispatch, getState) => {
+    dispatch({
         type: INCREMENT_CART_ITEM_QUANTITY,
         payload: productId,
-    }
+    })
+    localStorage.setItem('cart', JSON.stringify(getState().shop.cart))
 }
 
-export const decrementCartQuantity = productId => {
-    return {
+export const decrementCartQuantity = productId => (dispatch, getState) => {
+    dispatch({
         type: DECREMENT_CART_ITEM_QUANTITY,
         payload: productId,
-    }
+    })
+    localStorage.setItem('cart', JSON.stringify(getState().shop.cart))
 }
-

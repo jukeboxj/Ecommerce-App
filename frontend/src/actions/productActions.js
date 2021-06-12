@@ -40,7 +40,7 @@ export const listProduct = _id => async (dispatch, getState) => {
         const product = await products.find(p => p._id === _id)
 
         if (product === undefined) {
-            throw new Error(_id + '- Not Found')
+            throw new Error('Not Found ' + _id)
         } else {
             dispatch({
                 type: PRODUCT_SUCCESS,

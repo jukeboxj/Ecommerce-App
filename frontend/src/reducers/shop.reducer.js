@@ -7,8 +7,12 @@ import {
     CLEAR_CART,
 } from '../actions/shopActions'
 
+const cartFromStorage = localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : []
+
 const initialState = {
-    cart: [],
+    cart: cartFromStorage,
     shakeCart: false,
 }
 
@@ -82,7 +86,7 @@ const shopReducer = (state = initialState, action) => {
             return { ...state, cart: updatedCart }
 
         case CLEAR_CART:
-            return {...state, cart: []}
+            return { ...state, cart: [] }
 
         default:
             return state

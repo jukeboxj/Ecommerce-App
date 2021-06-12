@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FilterBar from '../containers/FilterBar/FilterBar'
 import ProductList from '../containers/ProductList/ProductList'
 import Spinner from '../components/Spinner/Spinner'
+import Message from '../components/Message'
 import { listProducts } from '../actions/productActions'
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
                 {loading ? (
                     <Spinner />
                 ) : error ? (
-                    <h1>ERROR OCCURRED - {error}</h1>
+                    <Message children={error} />
                 ) : (
                     <div className="row">
                         <FilterBar />

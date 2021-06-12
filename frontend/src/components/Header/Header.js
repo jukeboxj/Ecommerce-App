@@ -6,6 +6,10 @@ import './Header.scss'
 
 const Header = () => {
     const shakeCart = useSelector(state => state.shop.shakeCart)
+    const cart = useSelector(state => state.shop.cart)
+    const count = cart.reduce((acc, curItem) => {
+        return acc + curItem.quantity
+    }, 0)
 
     const wiggle = className('nav-item', { wiggle: shakeCart })
 
@@ -23,7 +27,7 @@ const Header = () => {
                                     className="bi bi-cart-fill me-2"
                                     aria-hidden="true"
                                 />
-                                Cart
+                                Cart{count > 0 ? ` (${count})` : ''}
                             </NavLink>
                         </li>
                     </ul>

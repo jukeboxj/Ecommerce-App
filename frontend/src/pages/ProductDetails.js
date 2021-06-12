@@ -4,6 +4,7 @@ import ProductDetail from '../components/ProductDetail'
 import ProductSlider from '../components/ProductSlider/ProductSlider'
 import { listProduct } from '../actions/productActions'
 import Spinner from '../components/Spinner/Spinner'
+import Message from '../components/Message'
 
 const ProductDetails = ({ match }) => {
     const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const ProductDetails = ({ match }) => {
             {loading ? (
                 <Spinner />
             ) : error ? (
-                <h1>ERROR OCCURRED - {error}</h1>
+                <Message children={error} />
             ) : (
                 <div className="container" style={{ padding: '6rem 0' }}>
                     <div className="card">
