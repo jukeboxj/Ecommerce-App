@@ -46,14 +46,13 @@ app.post(
                 amount: i.price * 100,
                 quantity: i.quantity,
                 currency: 'cad',
+                tax_rates: ['txr_1J1OkaAHdwvoELa8DnXutTrG'],
             }
         })
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            shipping_rates: [
-                'shr_1J1OkyAHdwvoELa8MUq1m3oN',
-            ],
+            shipping_rates: ['shr_1J1OkyAHdwvoELa8MUq1m3oN'],
             shipping_address_collection: {
                 allowed_countries: ['US', 'CA'],
             },
@@ -61,6 +60,9 @@ app.post(
             mode: 'payment',
             success_url: `${YOUR_DOMAIN}?success=true`,
             cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+            tax_id_collection: {
+                enabled: true,
+            },
         })
 
         res.json({ id: session.id })
