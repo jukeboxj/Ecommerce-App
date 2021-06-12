@@ -10,10 +10,12 @@ const orderReducer = (state = {}, action) => {
         case PLACE_ORDER_REQUEST:
             return {
                 loading: true,
+                order: action.payload,
             }
 
         case PLACE_ORDER_SUCCESS:
             return {
+                ...state,
                 loading: false,
                 success: true,
                 session: action.payload,
@@ -21,6 +23,7 @@ const orderReducer = (state = {}, action) => {
 
         case PLACE_ORDER_FAIL:
             return {
+                ...state,
                 loading: false,
                 error: action.payload,
             }

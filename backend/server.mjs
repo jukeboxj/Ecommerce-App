@@ -38,21 +38,26 @@ const YOUR_DOMAIN = 'http://localhost:2000/products'
 app.post(
     '/api/create-checkout-session',
     asyncHandler(async (req, res) => {
+        const order = req.body
+        const items = order.map(i => {
+            return {
+                name: i.title,
+                images: [i.images[0]],
+                amount: i.price * 100,
+                quantity: i.quantity,
+                currency: 'cad',
+            }
+        })
+
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            line_items: [
-                {
-                    price_data: {
-                        currency: 'usd',
-                        product_data: {
-                            name: 'Stubborn Attachments',
-                            images: ['https://i.imgur.com/EHyR2nP.png'],
-                        },
-                        unit_amount: 2000,
-                    },
-                    quantity: 1,
-                },
+            shipping_rates: [
+                'shr_1J1OkyAHdwvoELa8MUq1m3oN',
             ],
+            shipping_address_collection: {
+                allowed_countries: ['US', 'CA'],
+            },
+            line_items: items,
             mode: 'payment',
             success_url: `${YOUR_DOMAIN}?success=true`,
             cancel_url: `${YOUR_DOMAIN}?canceled=true`,
