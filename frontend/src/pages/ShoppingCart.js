@@ -1,11 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import CartItem from '../components/CartItem/CartItem'
-import Checkout from '../components/Checkout'
+import CardFooter from '../components/CardFooter/CardFooter'
 
 const ShoppingCart = () => {
     const cart = useSelector(state => state.shop.cart)
-
     const cartItemCount = cart.reduce((count, curItem) => {
         return count + curItem.quantity
     }, 0)
@@ -40,58 +39,8 @@ const ShoppingCart = () => {
                             </li>
                         )}
                     </ul>
-                    <div className="card-footer">
-                        <div
-                            className="d-flex justify-content-center justify-content-md-between"
-                            style={{ margin: '10px' }}
-                        >
-                            <div
-                                href="#"
-                                className="list-group list-group-horizontal-sm"
-                            >
-                                <a href="#" className="list-group-item">
-                                    NL
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    PE
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    NS
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    NB
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    QC
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    ON
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    MB
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    SK
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    AB
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    BC
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    YT
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    NT
-                                </a>
-                                <a href="#" className="list-group-item">
-                                    NU
-                                </a>
-                            </div>
-                            <div></div>
-                            {cartItemCount ? <Checkout /> : ''}
-                        </div>
+                    <div className="card-footer container">
+                        <CardFooter cartItemCount={cartItemCount} />
                     </div>
                 </div>
             </div>

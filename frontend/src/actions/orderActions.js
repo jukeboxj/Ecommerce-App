@@ -5,6 +5,7 @@ export const PLACE_ORDER_REQUEST = 'PLACE_ORDER_REQUEST'
 export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS'
 export const PLACE_ORDER_FAIL = 'PLACE_ORDER_FAIL'
 export const ORDER_RESET = 'ORDER_RESET'
+export const SET_REGION = 'SET_REGION'
 
 export const placeOrder = () => async (dispatch, getState) => {
     try {
@@ -29,15 +30,6 @@ export const placeOrder = () => async (dispatch, getState) => {
             // using `result.error.message`.
             throw new Error('Communication Failed - ' + result.error.message)
         }
-        // else {
-        //     dispatch({
-        //         type: PLACE_ORDER_SUCCESS,
-        //         payload: id,
-        //     })
-        //     dispatch({
-        //         type: CLEAR_CART,
-        //     })
-        // }
     } catch (error) {
         dispatch({
             type: PLACE_ORDER_FAIL,
@@ -46,5 +38,12 @@ export const placeOrder = () => async (dispatch, getState) => {
                     ? error.response.data.message
                     : error.message,
         })
+    }
+}
+
+export const setRegion = region => {
+    return {
+        type: SET_REGION,
+        payload: region,
     }
 }

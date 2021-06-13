@@ -13,6 +13,7 @@ function Checkout() {
     const totalPrice = cart.reduce((count, curItem) => {
         return count + curItem.price * curItem.quantity
     }, 0)
+    const region = useSelector(state => state.order.region)
 
     const handleClick = () => {
         dispatch(placeOrder())
@@ -37,6 +38,7 @@ function Checkout() {
                 <button
                     className="btn btn-outline-primary"
                     onClick={handleClick}
+                    disabled={!region}
                 >
                     Check Out for <b>${formatMoney(totalPrice)}</b>
                 </button>

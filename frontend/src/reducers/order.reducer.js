@@ -3,6 +3,7 @@ import {
     PLACE_ORDER_SUCCESS,
     PLACE_ORDER_FAIL,
     ORDER_RESET,
+    SET_REGION,
 } from '../actions/orderActions'
 
 const orderReducer = (state = {}, action) => {
@@ -30,6 +31,12 @@ const orderReducer = (state = {}, action) => {
 
         case ORDER_RESET:
             return {}
+
+        case SET_REGION:
+            return {
+                ...state,
+                region: action.payload,
+            }
 
         default:
             return state
