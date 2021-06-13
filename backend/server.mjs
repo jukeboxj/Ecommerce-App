@@ -41,12 +41,16 @@ app.post(
         const order = req.body
         const items = order.map(i => {
             return {
-                name: i.title,
-                images: [i.images[0]],
-                amount: i.price * 100,
                 quantity: i.quantity,
-                currency: 'cad',
-                tax_rates: ['txr_1J1OkaAHdwvoELa8DnXutTrG'],
+                price_data: {
+                    currency: 'cad',
+                    unit_amount_decimal: i.price * 100,
+                    product_data: {
+                        name: i.title,
+                        images: [i.images[0]],
+                    },
+                },
+                tax_rates: ['txr_1J1dWPAHdwvoELa8QKAXeGWz'],
             }
         })
 
@@ -60,9 +64,6 @@ app.post(
             mode: 'payment',
             success_url: `${YOUR_DOMAIN}?success=true`,
             cancel_url: `${YOUR_DOMAIN}?canceled=true`,
-            tax_id_collection: {
-                enabled: true,
-            },
         })
 
         res.json({ id: session.id })

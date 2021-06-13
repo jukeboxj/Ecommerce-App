@@ -42,9 +42,54 @@ const ShoppingCart = () => {
                     </ul>
                     <div className="card-footer">
                         <div
-                            className="d-flex justify-content-center justify-content-md-end"
+                            className="d-flex justify-content-center justify-content-md-between"
                             style={{ margin: '10px' }}
                         >
+                            <div
+                                href="#"
+                                className="list-group list-group-horizontal-sm"
+                            >
+                                <a href="#" className="list-group-item">
+                                    NL
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    PE
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    NS
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    NB
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    QC
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    ON
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    MB
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    SK
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    AB
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    BC
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    YT
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    NT
+                                </a>
+                                <a href="#" className="list-group-item">
+                                    NU
+                                </a>
+                            </div>
+                            <div></div>
                             {cartItemCount ? <Checkout /> : ''}
                         </div>
                     </div>

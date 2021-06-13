@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { categories } from '../data/categories'
 import {
     addCategoryToFilter,
     removeCategoryFromFilter,
@@ -22,6 +21,12 @@ const CategoryFilter = () => {
         }
     })
     const filter = useSelector(state => state.categoryFilter)
+    const products = useSelector(state => state.productList.products)
+    const cateSet = new Set()
+    for (const p of products) {
+        cateSet.add(p.category)
+    }
+    const categories = Array.from(cateSet)
 
     const handleSelectBox = e => {
         const name = e.currentTarget.name
