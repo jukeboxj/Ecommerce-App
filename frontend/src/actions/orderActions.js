@@ -10,6 +10,8 @@ export const SET_REGION = 'SET_REGION'
 export const placeOrder = () => async (dispatch, getState) => {
     try {
         const cart = getState().shop.cart
+        const region = getState().order.region
+        if (!region) throw new Error('Region Unselected')
         dispatch({
             type: PLACE_ORDER_REQUEST,
             payload: cart,
@@ -19,7 +21,10 @@ export const placeOrder = () => async (dispatch, getState) => {
             'pk_test_51CM58QAHdwvoELa8WoHPuehn9zHg03Wi9CFfA3sHi8424yfytiXNC9gFRTtPobPpOdhI15eSZ6n7VUCZw4pUfivO00WmPmsNsY'
         )
         const stripe = await stripePromise
-        const response = await axios.post('api/create-checkout-session', cart)
+        const response = await axios.post('api/orders', {
+            order: cart,
+            region,
+        })
         const id = response.data.id
 
         // When the customer clicks on the button, redirect them to Checkout.

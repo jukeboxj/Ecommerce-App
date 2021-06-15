@@ -24,7 +24,7 @@ const CardFooter = ({ cartItemCount }) => {
                         aria-label="select"
                         onChange={handleChange}
                     >
-                        <option selected>{selectPhrase}</option>
+                        <option defaultValue="">{selectPhrase}</option>
                         {regions.map(region => (
                             <option className="" value={region} key={region}>
                                 {region}
