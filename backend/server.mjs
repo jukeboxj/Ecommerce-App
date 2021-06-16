@@ -29,6 +29,7 @@ app.use('/api/orders', orderRoutes)
 //     res.sendFile(INDEX)
 // })
 
-app.listen(1000, () => {
-    console.log('Serving on port 1000')
+const port = process.env.PORT
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`)
 })
