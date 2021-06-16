@@ -6,7 +6,15 @@ import {
     SET_REGION,
 } from '../actions/orderActions'
 
-const orderReducer = (state = {}, action) => {
+const regionFromStorage = localStorage.getItem('region')
+    ? JSON.parse(localStorage.getItem('region'))
+    : ''
+
+const intialState = {
+    region: regionFromStorage,
+}
+
+const orderReducer = (state = intialState, action) => {
     switch (action.type) {
         case PLACE_ORDER_REQUEST:
             return {

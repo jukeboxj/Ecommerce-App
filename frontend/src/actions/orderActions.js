@@ -22,7 +22,7 @@ export const placeOrder = () => async (dispatch, getState) => {
         )
         const stripe = await stripePromise
         const response = await axios.post('api/orders', {
-            order: cart,
+            cart,
             region,
         })
         const id = response.data.id
@@ -47,6 +47,7 @@ export const placeOrder = () => async (dispatch, getState) => {
 }
 
 export const setRegion = region => {
+    localStorage.setItem('region', JSON.stringify(region))
     return {
         type: SET_REGION,
         payload: region,

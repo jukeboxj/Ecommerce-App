@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import CartItem from '../components/CartItem/CartItem'
-import CardFooter from '../components/CardFooter/CardFooter'
+import CartFooter from '../components/CartFooter/CartFooter'
 
 const ShoppingCart = () => {
     const cart = useSelector(state => state.shop.cart)
@@ -40,7 +40,7 @@ const ShoppingCart = () => {
                         )}
                     </ul>
                     <div className="card-footer container">
-                        <CardFooter cartItemCount={cartItemCount} />
+                        <CartFooter cartItemCount={cartItemCount} />
                     </div>
                 </div>
             </div>

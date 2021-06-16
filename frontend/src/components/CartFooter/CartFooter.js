@@ -1,10 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setRegion } from '../../actions/orderActions'
 import Checkout from '../Checkout'
 import regions from '../../utilities/regions'
 
-const CardFooter = ({ cartItemCount }) => {
+const CartFooter = ({ cartItemCount }) => {
     const dispatch = useDispatch()
 
     const selectPhrase = 'Please Select Your Region'
@@ -15,6 +15,8 @@ const CardFooter = ({ cartItemCount }) => {
         else dispatch(setRegion(''))
     }
 
+    const defaultVal = useSelector(state => state.order.region)
+
     return (
         <div>
             {cartItemCount ? (
@@ -23,8 +25,9 @@ const CardFooter = ({ cartItemCount }) => {
                         className="form-select w-auto"
                         aria-label="select"
                         onChange={handleChange}
+                        defaultValue={defaultVal}
                     >
-                        <option defaultValue="">{selectPhrase}</option>
+                        <option value="">{selectPhrase}</option>
                         {regions.map(region => (
                             <option className="" value={region} key={region}>
                                 {region}
@@ -42,4 +45,4 @@ const CardFooter = ({ cartItemCount }) => {
     )
 }
 
-export default CardFooter
+export default CartFooter
