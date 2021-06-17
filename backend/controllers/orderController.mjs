@@ -1,3 +1,4 @@
+import path from 'path'
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.mjs'
 import taxRate from '../config/taxRate.mjs'
@@ -6,7 +7,7 @@ import Stripe from 'stripe'
 const stripe = new Stripe(
     'sk_test_51CM58QAHdwvoELa8SjyoBAAMeXRGgx8Ac4XpZIhZ442GDkWLoSBaqok2EwgfhARmWEnoVvilhDVcvs9EJq1B0pWF00Q6mhrDLm'
 )
-const YOUR_DOMAIN = 'http://localhost:2000/products'
+const YOUR_DOMAIN = path.resolve()
 
 // @desc    Create new order
 // @route   POST /api/orders
