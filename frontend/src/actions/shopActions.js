@@ -40,3 +40,11 @@ export const decrementCartQuantity = productId => (dispatch, getState) => {
     })
     localStorage.setItem('cart', JSON.stringify(getState().shop.cart))
 }
+
+export const clearCart = () => (dispatch, getState) => {
+    dispatch({
+        type: CLEAR_CART,
+    })
+    localStorage.removeItem('cart')
+    localStorage.removeItem('region')
+}

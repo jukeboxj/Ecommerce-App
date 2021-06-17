@@ -7,7 +7,10 @@ import Stripe from 'stripe'
 if (process.env.NODE_ENV !== 'production') dotenv.config()
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-const YOUR_DOMAIN = process.env.ROOT_URL
+const YOUR_DOMAIN =
+    process.env.NODE_ENV === 'development'
+        ? 'http://localhost:2000/'
+        : process.env.ROOT_URL
 
 // @desc    Create new order
 // @route   POST /api/orders

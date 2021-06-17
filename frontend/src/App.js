@@ -8,7 +8,6 @@ import ProductDetails from './pages/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart'
 
 const App = () => {
-
     return (
         <>
             <BrowserRouter>
