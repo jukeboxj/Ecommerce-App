@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1">
             <div className="container">
-                <NavLink className="navbar-brand" to={'/products'}>
+                <NavLink className="navbar-brand" to={'/'}>
                     Kirkfall
                 </NavLink>
                 <div>
