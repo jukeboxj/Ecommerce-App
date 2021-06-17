@@ -8,7 +8,7 @@ import connectDB from './config/db.mjs'
 import productRoutes from './routes/productRoutes.mjs'
 import orderRoutes from './routes/orderRoutes.mjs'
 
-if (process.env.NODE_ENV !== 'production') dotenv.config()
+if (process.env.NODE_ENV === 'development') dotenv.config()
 
 connectDB()
 
@@ -22,7 +22,7 @@ app.use(methodOverride('_method'))
 app.use('/api/products', productRoutes)
 app.use('/api/orders', orderRoutes)
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'development') {
     const STATIC = path.join(__dirname, '/frontend/build')
     const INDEX = path.resolve(STATIC, 'index.html')
 
