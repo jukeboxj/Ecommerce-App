@@ -1,6 +1,4 @@
 node_modules
-build/
 .gitattributes
 .DS_Store
-backend/views/build
 .env
