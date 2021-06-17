@@ -8,7 +8,7 @@ import connectDB from './config/db.mjs'
 import productRoutes from './routes/productRoutes.mjs'
 import orderRoutes from './routes/orderRoutes.mjs'
 
-if (process.env.NODE_ENV !== 'development') dotenv.config()
+if (process.env.NODE_ENV !== 'production') dotenv.config()
 
 connectDB()
 

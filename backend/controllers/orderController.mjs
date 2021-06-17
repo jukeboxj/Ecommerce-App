@@ -1,12 +1,12 @@
-import path from 'path'
+import dotenv from 'dotenv'
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.mjs'
 import taxRate from '../config/taxRate.mjs'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(
-    'sk_test_51CM58QAHdwvoELa8SjyoBAAMeXRGgx8Ac4XpZIhZ442GDkWLoSBaqok2EwgfhARmWEnoVvilhDVcvs9EJq1B0pWF00Q6mhrDLm'
-)
+if (process.env.NODE_ENV !== 'production') dotenv.config()
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const YOUR_DOMAIN = process.env.ROOT_URL
 
 // @desc    Create new order
